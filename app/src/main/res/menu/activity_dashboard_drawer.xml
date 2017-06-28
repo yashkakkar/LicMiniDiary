@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/all_policy_holders"
+            android:icon="@drawable/ic_user_shape"
+            android:title="All Policy Holders" />
+        <item
+            android:id="@+id/premium_dues"
+            android:icon="@drawable/ic_edit_tool"
+            android:title="Premium Dues" />
+        <item
+            android:id="@+id/manage_contacts"
+            android:icon="@drawable/ic_add_user_button"
+            android:title="Manage Diary" />
+        <item
+            android:id="@+id/notes"
+            android:icon="@drawable/ic_add_comment_button"
+            android:title="Notes" />
+        <item
+            android:id="@+id/notifications"
+            android:icon="@drawable/ic_add_comment_button"
+            android:title="Notifications" />
+        <item
+            android:id="@+id/sync_now"
+            android:icon="@drawable/ic_calendar_with_spring_binder_and_date_blocks"
+            android:title="Sync Now" />
+        <item
+            android:id="@+id/upgrade_account"
+            android:icon="@drawable/ic_user_account_box"
+            android:title="Upgrade Account" />
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/ic_calendar_with_spring_binder_and_date_blocks"
+            android:title="Share" />
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_user_account_box"
+            android:title="Settings" />
+    </group>
+    <!--
+    <item
+        android:title="App Settings"
+        app:showAsAction="collapseActionView">
+        <menu>
+            <item
+                android:id="@+id/upgrade_account"
+                android:icon="@drawable/ic_user_account_box"
+                android:title="Upgrade Account" />
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/ic_calendar_with_spring_binder_and_date_blocks"
+                android:title="Share" />
+            <item
+                android:id="@+id/setting"
+                android:icon="@drawable/ic_user_account_box"
+                android:title="Settings" />
+        </menu>
+    </item>
+    -->
+</menu>

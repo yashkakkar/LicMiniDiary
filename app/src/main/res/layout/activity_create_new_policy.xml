@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false"
+    android:orientation="vertical"
+    android:padding="0dp">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_add_new_policy_holders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:weightSum="1"
+        tools:context="com.yashkakkar.licagentdiary.CreateNewPolicy">
+
+        <TextView
+            android:id="@+id/create_new_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="ADD NEW POLICY HOLDERS"
+            android:textColor="?attr/colorPrimary"
+            android:background="@drawable/item_selector"
+            android:clickable="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/select_existing_policy_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_selector"
+            android:clickable="true"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="SELECT POLICY HOLDER"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:id="@+id/layout_selected_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/item_selector"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/seleced_profile_pic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_member_profile_pic" />
+
+            <EditText
+                android:id="@+id/selected_member_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:gravity="top|center"
+                android:hint="Policy holder name"
+                android:includeFontPadding="false"
+                android:inputType="textCapWords|textPersonName"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="POLICY DETAILS"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_web_server" />
+
+            <EditText
+                android:id="@+id/policyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:gravity="top|start"
+                android:hint="Policy Name"
+                android:includeFontPadding="false"
+                android:inputType="textCapWords|textPersonName"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_edit_tool" />
+
+            <EditText
+                android:id="@+id/policyNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:gravity="top|start"
+                android:hint="Policy Number"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_calendar_with_a_clock_time_tools" />
+
+            <EditText
+                android:id="@+id/docDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:focusable="true"
+                android:gravity="top|start"
+                android:hint="DOC"
+                android:includeFontPadding="false"
+                android:inputType="date"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_calendar_with_spring_binder_and_date_blocks" />
+
+            <EditText
+                android:id="@+id/domDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:focusable="true"
+                android:gravity="top|start"
+                android:hint="DOM"
+                android:includeFontPadding="false"
+                android:inputType="date"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_calendar_with_spring_binder_and_date_blocks" />
+
+            <EditText
+                android:id="@+id/dobDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:focusable="true"
+                android:gravity="top|start"
+                android:hint="DOB"
+                android:includeFontPadding="false"
+                android:inputType="date"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_table_grid" />
+
+            <EditText
+                android:id="@+id/tableTerm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:gravity="top|start"
+                android:hint="Table Term"
+                android:includeFontPadding="false"
+                android:inputType="text|number"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_calendar_with_spring_binder_and_date_blocks" />
+
+            <EditText
+                android:id="@+id/dlpDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:focusable="true"
+                android:gravity="top|start"
+                android:hint="DLP"
+                android:includeFontPadding="false"
+                android:inputType="date"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_rupee_indian" />
+
+            <EditText
+                android:id="@+id/saAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:gravity="top|start"
+                android:hint="SA"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:paddingBottom="16dp"
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_calendar_with_a_clock_time_tools" />
+
+            <Spinner
+                android:id="@+id/mode"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:prompt="@string/mode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="48dp"
+                android:entries="@array/mode_array"
+                android:gravity="top|start"
+                android:includeFontPadding="false"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_rupee_indian" />
+
+            <EditText
+                android:id="@+id/premiumAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:gravity="top|start"
+                android:hint="Premium Amount"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/ic_user_account_box" />
+
+            <EditText
+                android:id="@+id/nomineeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="48dp"
+                android:ems="10"
+                android:gravity="top|start"
+                android:hint="Nominee Name"
+                android:includeFontPadding="false"
+                android:inputType="textCapWords|textPersonName"
+                android:paddingBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

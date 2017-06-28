@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "531277620376",
+    "firebase_url": "https://licagentdiary-2fefe.firebaseio.com",
+    "project_id": "licagentdiary-2fefe",
+    "storage_bucket": "licagentdiary-2fefe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531277620376:android:96716a0559519648",
+        "android_client_info": {
+          "package_name": "com.yashkakkar.licagentdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531277620376-mo2pu5do3jti2l5lvrd67g7kjhlcdv0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yashkakkar.licagentdiary",
+            "certificate_hash": "7c445e57d9b4c599ee73260acb6f9778ebc09bd3"
+          }
+        },
+        {
+          "client_id": "531277620376-d9729k109nt76tv0bmlfc7rbs0ic4io5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyColVH2aIU-fZy-esMNj3jXR3sMKtIi0Ao"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531277620376-d9729k109nt76tv0bmlfc7rbs0ic4io5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

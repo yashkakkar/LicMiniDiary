@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#607d8b</color>
+    <color name="colorPrimaryDark">#556080</color>
+    <color name="colorAccent">#448aff</color>
+    <color name="lightPrimaryColor">#cfd8dc</color>
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+    <color name="dividerColor">#BDBDBD</color>
+    <color name="rippleColor">#757575</color>
+
+    <color name="white">#fff</color>
+
+    <color name="orange">#EF6C00</color>
+    <color name="pink">#e91e63</color>
+    <color name="blue">#448aff</color>
+    <color name="grey">#455a64</color>
+    <color name="purple">#6A1B9A</color>
+
+
+    <color name="screenOne">#e91e63</color>
+    <color name="screenTwo">#9C27B0</color>
+    <color name="screenThree">#FF9800</color>
+    <color name="screenFour">#FFEB3B</color>
+    <color name="screenFive">#2196F3</color>
+
+    <color name="dot_dark_screenOne">#AD1457</color>
+    <color name="dot_dark_screenTwo">#6A1B9A</color>
+    <color name="dot_dark_screenThree">#EF6C00</color>
+    <color name="dot_dark_screenFour">#F9A825</color>
+    <color name="dot_dark_screenFive">#1565c0</color>
+
+    <color name="dot_light_screenOne">#F48FB1</color>
+    <color name="dot_light_screenTwo">#CE93D8</color>
+    <color name="dot_light_screenThree">#FFCC80</color>
+    <color name="dot_light_screenFour">#FFF59D</color>
+    <color name="dot_light_screenFive">#90CAF9</color>
+
+    <array name="dot_active">
+        <item>@color/dot_light_screenOne</item>
+        <item>@color/dot_light_screenTwo</item>
+        <item>@color/dot_light_screenThree</item>
+        <item>@color/dot_light_screenFour</item>
+        <item>@color/dot_light_screenFive</item>
+    </array>
+    <array name="dot_inactive">
+        <item>@color/dot_dark_screenOne</item>
+        <item>@color/dot_dark_screenTwo</item>
+        <item>@color/dot_dark_screenThree</item>
+        <item>@color/dot_dark_screenFour</item>
+        <item>@color/dot_dark_screenFive</item>
+    </array>
+
+
+
+</resources>

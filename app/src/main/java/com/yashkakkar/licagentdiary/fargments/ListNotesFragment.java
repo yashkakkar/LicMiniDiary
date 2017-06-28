@@ -1,0 +1,138 @@
+package com.yashkakkar.licagentdiary.fargments;
+
+import android.app.Fragment;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+
+import com.yashkakkar.licagentdiary.R;
+import com.yashkakkar.licagentdiary.async.eventbus.GetNoteListEvent;
+import com.yashkakkar.licagentdiary.async.notes.GetNotesListTask;
+import com.yashkakkar.licagentdiary.models.Adapters.NoteListAdapter;
+import com.yashkakkar.licagentdiary.models.Note;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.Collections;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
+/**
+ * Created by Yash Kakkar on 31-05-2017.
+ */
+
+public class ListNotesFragment extends Fragment {
+
+    @BindView(R.id.notesListView) RecyclerView notesListView;
+    @BindView(R.id.empty_list_notes_fragment) RelativeLayout emptyNoteFragment;
+    List<Note> notes;
+    NoteListAdapter noteListAdapter;
+    Unbinder unbinder;
+
+    public static ListNotesFragment newInstance(String param1){
+        ListNotesFragment fragment = new ListNotesFragment();
+        Bundle args = new Bundle();
+        args.putString("agrs1", param1);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public ListNotesFragment() {
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_list_notes,container,false);
+        unbinder = ButterKnife.bind(this,v);
+        EventBus.getDefault().register(this);
+
+        notes = Collections.emptyList();
+        noteListAdapter = new NoteListAdapter(getActivity(),notes);
+        notesListView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
+        notesListView.setAdapter(noteListAdapter);
+
+        GetNotesListTask getNotesListTask = new GetNotesListTask(getActivity());
+        getNotesListTask.execute();
+        return v;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        unbinder.unbind();
+        super.onDestroy();
+    }
+
+    @Subscribe
+    public void onEvent(GetNoteListEvent event){
+        notes = event.getNotes();
+        noteListAdapter = new NoteListAdapter(getActivity(),notes);
+        notesListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        notesListView.setAdapter(noteListAdapter);
+        if (notesListView!= null){
+            emptyNoteFragment.removeAllViews();
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.list_notes_fragment_menu, menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.notes_menu_log_out:
+                // logout from the app
+                //System.exit(1);
+                break;
+            case R.id.notes_menu_settings:
+                // Go to notes setting menu
+                break;
+        }
+        return true;
+    }
+
+}

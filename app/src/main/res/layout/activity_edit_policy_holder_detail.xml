@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false"
+    android:orientation="vertical"
+    android:padding="0dp">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_add_new_policy_holders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:context="com.yashkakkar.licagentdiary.ViewPolicyHolderDetail">
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/ic_user_shape_blue" />
+
+
+        <LinearLayout
+            android:id="@+id/rootLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_image"
+            android:background="@android:color/background_light"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/rootChild1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+                <!-- About Policy Holder Info Card -->
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:elevation="2dp"
+                    app:cardElevation="2dp">
+                    <!-- Card View Layout -->
+                    <LinearLayout
+                        android:id="@+id/cardView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="8dp">
+                        <!-- Card View Heading -->
+                        <LinearLayout
+                            android:id="@+id/headingRow1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="25dp">
+
+                            <TextView
+                                android:id="@+id/about_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit policy holder detail"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+                        <!-- Card View divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/dividerColor" />
+                        <!-- Row 1 -->
+                        <LinearLayout
+                            android:id="@+id/row1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView1"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_user_shape" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/policy_holder_name_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:hint="Name"
+                                    android:inputType="textPersonName" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 2 -->
+                        <LinearLayout
+                            android:id="@+id/row2"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_call_grey_24dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/phone_number_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="Phone Number"
+                                    android:inputType="textPersonName" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 3 -->
+                        <LinearLayout
+                            android:id="@+id/row3"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_email_grey_24dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/email_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="Email Address"
+                                    android:inputType="textPersonName" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rootChild2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+                <!-- Policy Info Card -->
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:elevation="2dp"
+                    app:cardElevation="2dp">
+                    <!-- Card View Layout -->
+                    <LinearLayout
+                        android:id="@+id/cardView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="8dp">
+                        <!-- Card View Heading -->
+                        <LinearLayout
+                            android:id="@+id/headingRow2"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="25dp">
+
+                            <TextView
+                                android:id="@+id/textHeadingView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit policy detail"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                        <!-- Card View divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/dividerColor" />
+                        <!-- Row 1 -->
+                        <LinearLayout
+                            android:id="@+id/row5"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView5"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_web_server" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/policy_name_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="Policy Name"
+                                    android:inputType="textPersonName" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 2 -->
+                        <LinearLayout
+                            android:id="@+id/row6"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView6"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_edit_tool" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/policy_number_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:ems="10"
+                                    android:hint="Policy Number"
+                                    android:inputType="textPersonName" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <!-- Row 3 -->
+                        <LinearLayout
+                            android:id="@+id/row7"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView7"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_calendar_with_a_clock_time_tools" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/doc_date_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.06"
+                                    android:ems="10"
+                                    android:hint="DOC"
+                                    android:focusable="false" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 4 -->
+                        <LinearLayout
+                            android:id="@+id/row8"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView8"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_calendar_with_spring_binder_and_date_blocks" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/dlp_date_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.06"
+                                    android:ems="10"
+                                    android:hint="DLP"
+                                    android:focusable="false" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 5 -->
+                        <LinearLayout
+                            android:id="@+id/row9"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView9"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_calendar_with_spring_binder_and_date_blocks" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/dom_date_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.06"
+                                    android:ems="10"
+                                    android:hint="DOM"
+                                    android:focusable="false" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 6 -->
+                        <LinearLayout
+                            android:id="@+id/row10"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView10"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_calendar_with_spring_binder_and_date_blocks" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/dob_date_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.06"
+                                    android:ems="10"
+                                    android:hint="DOB"
+                                    android:focusable="false" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 7 -->
+                        <LinearLayout
+                            android:id="@+id/row11"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView11"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_table_grid" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/term_table_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.06"
+                                    android:ems="10"
+                                    android:hint="Term Table"
+                                    android:inputType="textPersonName" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 8 -->
+                        <LinearLayout
+                            android:id="@+id/row12"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView12"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_calendar_with_a_clock_time_tools" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <Spinner
+                                    android:id="@+id/mode_edit"
+                                    android:entries="@array/mode_array"
+                                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 9 -->
+                        <LinearLayout
+                            android:id="@+id/row13"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView13"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_rupee_indian" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/sa_amt_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.06"
+                                    android:ems="10"
+                                    android:hint="SA Amount"
+                                    android:inputType="textPersonName" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 10 -->
+                        <LinearLayout
+                            android:id="@+id/row14"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView14"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_rupee_indian" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/premium_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.06"
+                                    android:ems="10"
+                                    android:hint="Premium"
+                                    android:inputType="textPersonName" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!-- Row 11 -->
+                        <LinearLayout
+                            android:id="@+id/row15"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp">
+
+                            <ImageView
+                                android:id="@+id/imageView15"
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="16dp"
+                                app:srcCompat="@drawable/ic_user_account_box" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+
+                                <EditText
+                                    android:id="@+id/nominee_name_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ems="10"
+                                    android:hint="Nomine Name"
+                                    android:inputType="textPersonName" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/policy_holder_name_edit_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/rootLinearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="39dp"
+            android:layout_marginStart="39dp"
+            android:text="Policy Holder Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+</ScrollView>

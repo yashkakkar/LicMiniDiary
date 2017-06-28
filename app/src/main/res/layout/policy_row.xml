@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/profile_row_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="115dp"
+    android:background="@drawable/item_selector"
+    android:clickable="true">
+
+    <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/policy_row_profile_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_member_profile_pic"
+        app:sriv_border_color="#008fea"
+        app:sriv_border_width="0dip"
+        app:sriv_left_bottom_corner_radius="16dip"
+        app:sriv_left_top_corner_radius="16dip"
+        app:sriv_oval="true"
+        app:sriv_right_bottom_corner_radius="16dip"
+        app:sriv_right_top_corner_radius="16dip" />
+
+    <TextView
+        android:id="@+id/policy_row_member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/policy_row_profile_icon"
+        android:layout_toEndOf="@+id/policy_row_profile_icon"
+        android:layout_toRightOf="@+id/policy_row_profile_icon"
+        android:text="member name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/policy_row_policy_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/policy_row_profile_icon"
+        android:layout_alignStart="@+id/policy_row_profile_icon"
+        android:layout_below="@+id/policy_row_profile_icon"
+        android:layout_marginTop="8dp"
+        android:text="policy name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/policy_row_policy_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="policy number"
+        android:textSize="12sp"
+        android:layout_below="@+id/policy_row_policy_name"
+        android:layout_alignLeft="@+id/policy_row_policy_name"
+        android:layout_alignStart="@+id/policy_row_policy_name" />
+
+    <TextView
+        android:id="@+id/policy_row_docdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/policy_row_sa_amount"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@+id/policy_row_policy_number"
+        android:layout_toRightOf="@+id/policy_row_policy_number"
+        android:text="docdate"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/policy_row_premium_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/policy_row_policy_name"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="premium amount"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/policy_row_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mode"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginRight="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_alignBaseline="@+id/policy_row_premium_amount"
+        android:layout_alignBottom="@+id/policy_row_premium_amount"
+        android:layout_toLeftOf="@+id/policy_row_premium_amount"
+        android:layout_toStartOf="@+id/policy_row_premium_amount" />
+
+    <TextView
+        android:id="@+id/policy_row_sa_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sum assured amount"
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/policy_row_dlpdate"
+        android:layout_alignRight="@+id/policy_row_premium_amount"
+        android:layout_alignEnd="@+id/policy_row_premium_amount" />
+
+    <TextView
+        android:id="@+id/policy_row_domdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="domdate"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/policy_row_policy_number"
+        android:layout_alignStart="@+id/policy_row_policy_number"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/policy_row_term"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/policy_row_dlpdate"
+        android:layout_alignBottom="@+id/policy_row_dlpdate"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@+id/policy_row_dlpdate"
+        android:layout_toRightOf="@+id/policy_row_dlpdate"
+        android:text="term"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/policy_row_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/policy_row_member_name"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@+id/policy_row_dobdate"
+        android:layout_toRightOf="@+id/policy_row_dobdate"
+        android:text="age"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/policy_row_dobdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dobdate"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:layout_below="@+id/policy_row_member_name"
+        android:layout_alignLeft="@+id/policy_row_member_name"
+        android:layout_alignStart="@+id/policy_row_member_name" />
+
+    <TextView
+        android:id="@+id/policy_row_dlpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/policy_row_domdate"
+        android:layout_alignBottom="@+id/policy_row_domdate"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@+id/policy_row_domdate"
+        android:layout_toRightOf="@+id/policy_row_domdate"
+        android:text="dlpdate"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/policy_row_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="status"
+        android:layout_alignBaseline="@+id/policy_row_member_name"
+        android:layout_alignBottom="@+id/policy_row_member_name"
+        android:layout_alignRight="@+id/policy_row_premium_amount"
+        android:layout_alignEnd="@+id/policy_row_premium_amount" />
+
+</RelativeLayout>

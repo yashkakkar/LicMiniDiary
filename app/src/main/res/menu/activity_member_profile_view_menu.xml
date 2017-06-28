@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/member_profile_view_edit"
+        android:icon="@drawable/ic_edit_white_24dp"
+        android:title="edit"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/member_profile_view_delete"
+        android:icon="@drawable/ic_delete_white_24dp"
+        android:title="Delete"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/member_profile_view_delete_forever"
+        android:icon="@drawable/ic_delete_forever_white_24dp"
+        android:title="Delete Forever"
+        app:showAsAction="never"/>
+</menu>

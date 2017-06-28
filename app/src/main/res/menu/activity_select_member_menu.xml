@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search_policy_holders"
+        android:title="Search policy holders"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/add_new_member"
+        android:icon="@drawable/ic_add_user_button"
+        android:title="Add New Policy Holder"
+        app:showAsAction="always" />
+</menu>

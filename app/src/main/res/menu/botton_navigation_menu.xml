@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_notification"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Notifications" />
+    <item
+        android:id="@+id/tab_dues"
+        android:icon="@drawable/ic_policy_due_icon"
+        android:title="Dues" />
+    <item
+        android:id="@+id/tab_policies"
+        android:icon="@drawable/ic_all_policies_24dp"
+        android:title="Policies" />
+
+    <item
+        android:id="@+id/tab_notes"
+        android:icon="@drawable/ic_notes_icon"
+        android:title="Notes" />
+    <item
+        android:id="@+id/tab_contacts"
+        android:icon="@drawable/ic_round_account_button_with_user_inside"
+        android:title="Contacts" />
+</menu>
