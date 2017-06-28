@@ -7,6 +7,10 @@ import android.os.AsyncTask;
 import android.provider.ContactsContract;
 import android.util.Log;
 
+import com.yashkakkar.licagentdiary.async.eventbus.IsWhatsAppNumberEvent;
+
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 
 /**
@@ -94,6 +98,7 @@ public class IsWhatsAppNumber extends AsyncTask<String,Void,Boolean>{
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
+        EventBus.getDefault().post(new IsWhatsAppNumberEvent(aBoolean));
     }
 
 }

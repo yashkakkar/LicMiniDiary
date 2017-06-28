@@ -30,11 +30,15 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.joooonho.SelectableRoundedImageView;
+import com.yashkakkar.licagentdiary.async.IsWhatsAppNumber;
+import com.yashkakkar.licagentdiary.async.eventbus.IsWhatsAppNumberEvent;
 import com.yashkakkar.licagentdiary.database.DatabaseHelper;
 import com.yashkakkar.licagentdiary.models.Member;
 import com.yashkakkar.licagentdiary.models.Policy;
 import com.yashkakkar.licagentdiary.utils.BitmapUtility;
 import com.yashkakkar.licagentdiary.utils.DbBitmapUtility;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -127,6 +131,8 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
             memberProfileImageBg.setImageBitmap(bitmap);
         }
 
+        // remove card check
+        if (!isWhatsAppNumber) whatsAppCard.removeAllViews();
 
         // get member is fav or not
         final int fav = member.getMemberFav();
@@ -304,13 +310,18 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
         */
 
         // check if phone number have whatsapp contact
+        IsWhatsAppNumber asyncCheckNumber = new IsWhatsAppNumber(this);
+        asyncCheckNumber.execute(member.getMemberPhoneNumber());
 
 
 
-        // remove card check
-        if (!isWhatsAppNumber) whatsAppCard.removeAllViews();
+    }
 
-
+    @Subscribe
+    public void onEvent(IsWhatsAppNumberEvent event){
+       if (event.iswhatsAppNumberValid()){
+           whatsAppCard.setVisibility(View.VISIBLE);
+       }
     }
 
     @Override
