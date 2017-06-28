@@ -20,9 +20,10 @@ import java.util.ArrayList;
 public class IsWhatsAppNumber extends AsyncTask<String,Void,Boolean>{
 
     private Context context;
+    private boolean isWhatsAppNumber = false;
+    private String whatsAppId;
     // ArrayList for Store Whatsapp Contact
     // private ArrayList<String> myWhatsappContacts = new ArrayList<>();
-    private boolean isWhatsAppNumber = false;
 
     public IsWhatsAppNumber(Context context) {
         this.context = context;
@@ -67,9 +68,9 @@ public class IsWhatsAppNumber extends AsyncTask<String,Void,Boolean>{
 
                             if (whatsAppContactCursor != null) {
                                 whatsAppContactCursor.moveToFirst();
-                                /*
-                                  String id = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
-                                  String name = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+
+                                String id = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
+                                /* String name = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                                 */
                                 String number = whatsAppContactCursor.getString(whatsAppContactCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                                 whatsAppContactCursor.close();
@@ -83,6 +84,7 @@ public class IsWhatsAppNumber extends AsyncTask<String,Void,Boolean>{
 
                                 if (phoneNumber.contains(number)) {
                                     isWhatsAppNumber = true;
+                                    whatsAppId = id;
                                 }
                             }
                         }
@@ -98,7 +100,7 @@ public class IsWhatsAppNumber extends AsyncTask<String,Void,Boolean>{
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
-        EventBus.getDefault().post(new IsWhatsAppNumberEvent(aBoolean));
+        EventBus.getDefault().post(new IsWhatsAppNumberEvent(aBoolean,whatsAppId));
     }
 
 }
