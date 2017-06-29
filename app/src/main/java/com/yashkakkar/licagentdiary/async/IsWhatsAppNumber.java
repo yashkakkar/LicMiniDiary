@@ -85,6 +85,7 @@ public class IsWhatsAppNumber extends AsyncTask<String,Void,Boolean>{
                                 if (phoneNumber.contains(number)) {
                                     isWhatsAppNumber = true;
                                     whatsAppId = id;
+                                    Log.v("WhatsApp"," WhatsApp contact id  :  "+ id);
                                 }
                             }
                         }
@@ -100,7 +101,7 @@ public class IsWhatsAppNumber extends AsyncTask<String,Void,Boolean>{
     @Override
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
-        EventBus.getDefault().post(new IsWhatsAppNumberEvent(aBoolean,whatsAppId));
+        EventBus.getDefault().post(new IsWhatsAppNumberEvent(aBoolean, whatsAppId));
     }
 
 }

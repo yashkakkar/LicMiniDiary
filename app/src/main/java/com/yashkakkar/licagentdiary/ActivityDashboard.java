@@ -34,8 +34,6 @@ import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -55,7 +53,7 @@ import com.yashkakkar.licagentdiary.receivers.MyReceiver;
 
 import java.util.Map;
 
-public class ActivityDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ObservableScrollViewCallbacks {
+public class ActivityDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static Context mContext;
 
@@ -487,30 +485,6 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
-
-    }
-
-    @Override
-    public void onDownMotionEvent() {
-
-    }
-
-    @Override
-    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-        /*ActionBar ab = getSupportActionBar();
-        if (scrollState == ScrollState.UP) {
-            if (ab.isShowing()) {
-                ab.hide();
-            }
-        } else if (scrollState == ScrollState.DOWN) {
-            if (!ab.isShowing()) {
-                ab.show();
-            }
-        }*/
     }
 
     private void firebaseFunction() {

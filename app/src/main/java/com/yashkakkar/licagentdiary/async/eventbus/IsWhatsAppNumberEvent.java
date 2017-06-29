@@ -5,8 +5,8 @@ package com.yashkakkar.licagentdiary.async.eventbus;
  */
 
 public class IsWhatsAppNumberEvent {
-    boolean iswhatsAppNumber = false;
-    String whatsAppId;
+    private boolean iswhatsAppNumber = false;
+    private String whatsAppId;
 
     public IsWhatsAppNumberEvent(boolean iswhatsAppNumber, String _id) {
         this.iswhatsAppNumber = iswhatsAppNumber;

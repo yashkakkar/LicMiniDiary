@@ -38,6 +38,7 @@ import com.yashkakkar.licagentdiary.models.Policy;
 import com.yashkakkar.licagentdiary.utils.BitmapUtility;
 import com.yashkakkar.licagentdiary.utils.DbBitmapUtility;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.io.ByteArrayOutputStream;
@@ -53,27 +54,45 @@ import butterknife.Unbinder;
 
 public class MemberProfileView extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.member_profile_call) LinearLayout memberCall;
-    @BindView(R.id.member_profile_whatsapp) LinearLayout memberWhatsApp;
-    @BindView(R.id.member_profile_sms) LinearLayout memberSms;
-    @BindView(R.id.member_profile_fav_unselected) ToggleButton memberFav;
+    @BindView(R.id.member_profile_call)
+    LinearLayout memberCall;
+    @BindView(R.id.member_profile_whatsapp)
+    LinearLayout memberWhatsApp;
+    @BindView(R.id.member_profile_sms)
+    LinearLayout memberSms;
+    @BindView(R.id.member_profile_fav_unselected)
+    ToggleButton memberFav;
 
-    @BindView(R.id.member_profile_phone_number) TextView memberPhoneNumber;
-    @BindView(R.id.member_profile_email) TextView memberEmail;
-    @BindView(R.id.member_proflie_gender) TextView memberGender;
+    @BindView(R.id.member_profile_phone_number)
+    TextView memberPhoneNumber;
+    @BindView(R.id.member_profile_email)
+    TextView memberEmail;
+    @BindView(R.id.member_proflie_gender)
+    TextView memberGender;
 
-    @BindView(R.id.member_profile_image_icon) SelectableRoundedImageView memberProfileImageIcon;
-    @BindView(R.id.member_profile_image_bg) ImageView memberProfileImageBg;
+    @BindView(R.id.member_profile_image_icon)
+    SelectableRoundedImageView memberProfileImageIcon;
+    @BindView(R.id.member_profile_image_bg)
+    ImageView memberProfileImageBg;
+    @BindView(R.id.verticalLayout)
+    LinearLayout verticalLayout;
 
     // Whatsapp
-    @BindView(R.id.member_profile_whatsapp_card_view) CardView whatsAppCard;
-    @BindView(R.id.whatsapp_message) LinearLayout whatsAppMessage;
-    @BindView(R.id.whatsapp_voice_call) LinearLayout whatsAppVoiceCall;
-    @BindView(R.id.whatsapp_video_call) LinearLayout whatsAppVideoCall;
+    @BindView(R.id.member_profile_whatsapp_card_view)
+    CardView whatsAppCard;
+    @BindView(R.id.whatsapp_message)
+    LinearLayout whatsAppMessage;
+    @BindView(R.id.whatsapp_voice_call)
+    LinearLayout whatsAppVoiceCall;
+    @BindView(R.id.whatsapp_video_call)
+    LinearLayout whatsAppVideoCall;
     // Whatsapp text
-    @BindView(R.id.member_profile_whatsapp_message) TextView whatsAppMessageText;
-    @BindView(R.id.member_profile_whatsapp_voice_call) TextView whatsAppVoiceText;
-    @BindView(R.id.member_profile_whatsapp_video_call) TextView whatsAppVideoText;
+    @BindView(R.id.member_profile_whatsapp_message)
+    TextView whatsAppMessageText;
+    @BindView(R.id.member_profile_whatsapp_voice_call)
+    TextView whatsAppVoiceText;
+    @BindView(R.id.member_profile_whatsapp_video_call)
+    TextView whatsAppVideoText;
 
     private boolean isWhatsAppNumber = false;
     private String whatsAppId;
@@ -90,6 +109,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_profile_view);
         unbinder = ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
         savedInstanceState = getIntent().getExtras();
         if (savedInstanceState != null) {
             member = savedInstanceState.getParcelable("selectedMember");
@@ -137,7 +157,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
         }
 
         // remove card check
-        if (!isWhatsAppNumber) whatsAppCard.removeAllViews();
+        if (!isWhatsAppNumber) whatsAppCard.setVisibility(View.INVISIBLE);
 
         // get member is fav or not
         final int fav = member.getMemberFav();
@@ -183,54 +203,6 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
             }
         });
 
-        /*
-        ContentResolver resolver = context.getContentResolver();
-        cursor = resolver.query(
-                    ContactsContract.Data.CONTENT_URI,
-                    null, null, null,
-                    ContactsContract.Contacts.DISPLAY_NAME);
-
-        //Now read data from cursor like
-
-        while (cursor.moveToNext()) {
-              long _id = cursor.getLong(cursor.getColumnIndex(ContactsContract.Data._ID));
-              String displayName = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
-              String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-
-              Log.d("Data", _id+ " "+ displayName + " " + mimeType );
-
-        }
-        */
-
-    /*
-        public void onClickWhatsApp(View view) {
-
-            PackageManager pm=getPackageManager();
-            try {
-
-                Intent waIntent = new Intent(Intent.ACTION_SEND);
-                waIntent.setType("text/plain");
-                String text = "YOUR TEXT HERE";
-
-                PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
-                //Check if package exists or not. If not then code
-                //in catch block will be called
-                waIntent.setPackage("com.whatsapp");
-
-                waIntent.putExtra(Intent.EXTRA_TEXT, text);
-                startActivity(Intent.createChooser(waIntent, "Share with"));
-
-            } catch (NameNotFoundException e) {
-                Toast.makeText(this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
-                        .show();
-            }
-
-        }
-    */
-
-
-        /*With this code you can open the whatsapp chat with the given number.
-         */
 
         memberWhatsApp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,20 +238,85 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
 
             }
         });
-
-
-
-
         // sharing text message to a particular whatsapp number
-
-
-
         // show a fragment to make audio call, video call, or open whatsapp chat
         // show fragment only if the number is on whatsapp otherwise hide
-
         // check if phone number have whatsapp contact
         IsWhatsAppNumber asyncCheckNumber = new IsWhatsAppNumber(this);
         asyncCheckNumber.execute(member.getMemberPhoneNumber());
+
+
+        whatsAppMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*With this code you can open the whatsapp chat with the given number.
+                 */
+                Uri uri = Uri.parse("smsto:" + member.getMemberPhoneNumber());
+                Intent intentMsg = new Intent(Intent.ACTION_SENDTO, uri);
+                intentMsg.setPackage("com.whatsapp");
+                startActivity(Intent.createChooser(intentMsg, ""));
+            }
+        });
+
+        whatsAppVoiceCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentVoiceCall = new Intent();
+                intentVoiceCall.setAction(Intent.ACTION_VIEW);
+                // the _ids you save goes here at the end of /data/12562
+                intentVoiceCall.setDataAndType(Uri.parse("content://com.android.contacts/data/"+whatsAppId),
+                        "vnd.android.cursor.item/vnd.com.whatsapp.voip.call");
+                intentVoiceCall.setPackage("com.whatsapp");
+                startActivity(intentVoiceCall);
+            }
+        });
+
+        whatsAppVideoCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // video call
+                Intent intentVideoCall = new Intent();
+                intentVideoCall.setAction(Intent.ACTION_VIEW);
+                intentVideoCall.setDataAndType(Uri.parse("content://com.android.contacts/data/"+whatsAppId),
+                        "vnd.android.cursor.item/vnd.com.whatsapp.video.call");
+                intentVideoCall.setPackage("com.whatsapp");
+                startActivity(intentVideoCall);
+            }
+        });
+         /*
+        ContentResolver resolver = context.getContentResolver();
+        cursor = resolver.query(
+                    ContactsContract.Data.CONTENT_URI,
+                    null, null, null,
+                    ContactsContract.Contacts.DISPLAY_NAME);
+        //Now read data from cursor like
+        while (cursor.moveToNext()) {
+              long _id = cursor.getLong(cursor.getColumnIndex(ContactsContract.Data._ID));
+              String displayName = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
+              String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
+              Log.d("Data", _id+ " "+ displayName + " " + mimeType );
+        }
+        */
+    /*
+        public void onClickWhatsApp(View view) {
+            PackageManager pm=getPackageManager();
+            try {
+                Intent waIntent = new Intent(Intent.ACTION_SEND);
+                waIntent.setType("text/plain");
+                String text = "YOUR TEXT HERE";
+                PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+                //Check if package exists or not. If not then code
+                //in catch block will be called
+                waIntent.setPackage("com.whatsapp");
+                waIntent.putExtra(Intent.EXTRA_TEXT, text);
+                startActivity(Intent.createChooser(waIntent, "Share with"));
+            } catch (NameNotFoundException e) {
+                Toast.makeText(this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                        .show();
+          }
+        }
+    */
+
     }
 
     @Subscribe
@@ -296,6 +333,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
         unbinder.unbind();
         super.onDestroy();
     }
@@ -366,7 +404,6 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         int id = view.getId();
-
         switch (id) {
             case R.id.member_profile_call:
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + member.getMemberPhoneNumber()));
@@ -391,39 +428,18 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
             case R.id.member_profile_sms:
                 break;
             case R.id.member_profile_fav_unselected:
-
-
                 break;
+          /*  case R.id.whatsapp_message: // message
 
-
-            // whatsapp
-
-            case R.id.whatsapp_message: // message
-                Uri uri = Uri.parse("smsto:" + member.getMemberPhoneNumber());
-                Intent intentMsg = new Intent(Intent.ACTION_SENDTO, uri);
-                intentMsg.setPackage("com.whatsapp");
-                startActivity(Intent.createChooser(intentMsg,""));
                 break;
 
             case R.id.whatsapp_voice_call: // voice call
-                Intent intentVoiceCall = new Intent();
-                intentVoiceCall.setAction(Intent.ACTION_VIEW);
-                // the _ids you save goes here at the end of /data/12562
-                intentVoiceCall.setDataAndType(Uri.parse("content://com.android.contacts/data/"+whatsAppId),
-                                                            "vnd.android.cursor.item/vnd.com.whatsapp.voip.call");
-                intentVoiceCall.setPackage("com.whatsapp");
-                startActivity(intentVoiceCall);
+
                 break;
 
             case R.id.whatsapp_video_call:
-                // video call
-                Intent intentVideoCall = new Intent();
-                intentVideoCall.setAction(Intent.ACTION_VIEW);
-                intentVideoCall.setDataAndType(Uri.parse("content://com.android.contacts/data/"+whatsAppId),
-                                                            "vnd.android.cursor.item/vnd.com.whatsapp.video.call");
-                intentVideoCall.setPackage("com.whatsapp");
-                startActivity(intentVideoCall);
-                break;
+
+                break;*/
             default:
                 break;
         }
