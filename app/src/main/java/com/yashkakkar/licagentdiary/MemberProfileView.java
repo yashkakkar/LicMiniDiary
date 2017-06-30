@@ -202,7 +202,9 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
                 startActivity(Intent.createChooser(intentMsg, ""));
             }
         });
-       /* Not Working, do not found the activity to make a call
+
+
+        /* Not Working, do not found the activity to make a call
         whatsAppVoiceCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
