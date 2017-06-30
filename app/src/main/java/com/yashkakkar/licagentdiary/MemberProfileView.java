@@ -184,72 +184,17 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
             }
         });
 
-        memberCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // make a phone call
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + member.getMemberPhoneNumber()));
-                if (ActivityCompat.checkSelfPermission(MemberProfileView.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    startActivity(intent);
-                    return;
-                }
-            }
-        });
-
-
-        memberWhatsApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // make whatsapp call
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + member.getMemberPhoneNumber()));
-                intent.setAction(Intent.ACTION_VIEW);
-
-                // the _ids you save goes here at the end of /data/12562
-                intent.setDataAndType(Uri.parse("content://com.android.contacts/data/_id"),
-                        "vnd.android.cursor.item/vnd.com.whatsapp.voip.call");
-                intent.setPackage("com.whatsapp");
-
-                startActivity(intent);
-                intent.setPackage("com.whatsapp");
-                if (ActivityCompat.checkSelfPermission(MemberProfileView.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    startActivity(intent);
-                }
-            }
-        });
-
-        memberSms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // open sms activity
-
-            }
-        });
-        // sharing text message to a particular whatsapp number
-        // show a fragment to make audio call, video call, or open whatsapp chat
-        // show fragment only if the number is on whatsapp otherwise hide
+        // show View only if the number is on whatsapp otherwise hide
         // check if phone number have whatsapp contact
         IsWhatsAppNumber asyncCheckNumber = new IsWhatsAppNumber(this);
         asyncCheckNumber.execute(member.getMemberPhoneNumber());
 
 
+        // sharing text message to a particular whatsapp number
         whatsAppMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*With this code you can open the whatsapp chat with the given number.
+                /* Open the whats app chat box
                  */
                 Uri uri = Uri.parse("smsto:" + member.getMemberPhoneNumber());
                 Intent intentMsg = new Intent(Intent.ACTION_SENDTO, uri);
@@ -257,7 +202,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
                 startActivity(Intent.createChooser(intentMsg, ""));
             }
         });
-
+       /* Not Working, do not found the activity to make a call
         whatsAppVoiceCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -282,40 +227,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
                 intentVideoCall.setPackage("com.whatsapp");
                 startActivity(intentVideoCall);
             }
-        });
-         /*
-        ContentResolver resolver = context.getContentResolver();
-        cursor = resolver.query(
-                    ContactsContract.Data.CONTENT_URI,
-                    null, null, null,
-                    ContactsContract.Contacts.DISPLAY_NAME);
-        //Now read data from cursor like
-        while (cursor.moveToNext()) {
-              long _id = cursor.getLong(cursor.getColumnIndex(ContactsContract.Data._ID));
-              String displayName = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
-              String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
-              Log.d("Data", _id+ " "+ displayName + " " + mimeType );
-        }
-        */
-    /*
-        public void onClickWhatsApp(View view) {
-            PackageManager pm=getPackageManager();
-            try {
-                Intent waIntent = new Intent(Intent.ACTION_SEND);
-                waIntent.setType("text/plain");
-                String text = "YOUR TEXT HERE";
-                PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
-                //Check if package exists or not. If not then code
-                //in catch block will be called
-                waIntent.setPackage("com.whatsapp");
-                waIntent.putExtra(Intent.EXTRA_TEXT, text);
-                startActivity(Intent.createChooser(waIntent, "Share with"));
-            } catch (NameNotFoundException e) {
-                Toast.makeText(this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
-                        .show();
-          }
-        }
-    */
+        });*/
 
     }
 
@@ -424,22 +336,21 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.member_profile_whatsapp:
                 // ask for whatsapp message or a voice call or video call
+                Uri uri = Uri.parse("smsto:" + member.getMemberPhoneNumber());
+                Intent intentMsg = new Intent(Intent.ACTION_SENDTO, uri);
+                intentMsg.setPackage("com.whatsapp");
+                startActivity(Intent.createChooser(intentMsg, ""));
                 break;
             case R.id.member_profile_sms:
+                Intent intentSms = new Intent(Intent.ACTION_SENDTO);
+                intentSms.addCategory(Intent.CATEGORY_DEFAULT);
+                intentSms.setType("vnd.android-dir/mms-sms");
+                intentSms.setData(Uri.parse("smsto:"+member.getMemberPhoneNumber())); // This ensures only SMS apps respond
+                startActivity(intentSms);
                 break;
             case R.id.member_profile_fav_unselected:
-                break;
-          /*  case R.id.whatsapp_message: // message
 
                 break;
-
-            case R.id.whatsapp_voice_call: // voice call
-
-                break;
-
-            case R.id.whatsapp_video_call:
-
-                break;*/
             default:
                 break;
         }
