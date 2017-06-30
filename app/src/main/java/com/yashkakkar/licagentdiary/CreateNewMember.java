@@ -254,7 +254,6 @@ public class CreateNewMember extends AppCompatActivity {
         try {
             // Create a new file
             // Give a unique name to photo
-            long time_stamp = Calendar.getInstance().getTimeInMillis();
             String photo_name = GenerateUniqueId.newInstance().generateUniqueKeyUsingUUID();
             member.setMemberImageName(photo_name);
             member.setMemberImageFile(bytes.toByteArray());

@@ -1,24 +1,20 @@
 package com.yashkakkar.licagentdiary;
 
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
-import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,17 +32,14 @@ import com.yashkakkar.licagentdiary.database.DatabaseHelper;
 import com.yashkakkar.licagentdiary.models.Member;
 import com.yashkakkar.licagentdiary.models.Policy;
 import com.yashkakkar.licagentdiary.utils.BitmapUtility;
-import com.yashkakkar.licagentdiary.utils.DbBitmapUtility;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
+import static com.yashkakkar.licagentdiary.utils.Constants.PATH;
 
 /**
  * Created by Yash Kakkar on 26-05-2017.
@@ -54,54 +47,34 @@ import butterknife.Unbinder;
 
 public class MemberProfileView extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.member_profile_call)
-    LinearLayout memberCall;
-    @BindView(R.id.member_profile_whatsapp)
-    LinearLayout memberWhatsApp;
-    @BindView(R.id.member_profile_sms)
-    LinearLayout memberSms;
-    @BindView(R.id.member_profile_fav_unselected)
-    ToggleButton memberFav;
+    @BindView(R.id.member_profile_call) LinearLayout memberCall;
+    @BindView(R.id.member_profile_whatsapp) LinearLayout memberWhatsApp;
+    @BindView(R.id.member_profile_sms) LinearLayout memberSms;
+    @BindView(R.id.member_profile_fav_unselected) ToggleButton memberFav;
 
-    @BindView(R.id.member_profile_phone_number)
-    TextView memberPhoneNumber;
-    @BindView(R.id.member_profile_email)
-    TextView memberEmail;
-    @BindView(R.id.member_proflie_gender)
-    TextView memberGender;
+    @BindView(R.id.member_profile_phone_number) TextView memberPhoneNumber;
+    @BindView(R.id.member_profile_email) TextView memberEmail;
+    @BindView(R.id.member_proflie_gender) TextView memberGender;
 
-    @BindView(R.id.member_profile_image_icon)
-    SelectableRoundedImageView memberProfileImageIcon;
-    @BindView(R.id.member_profile_image_bg)
-    ImageView memberProfileImageBg;
-    @BindView(R.id.verticalLayout)
-    LinearLayout verticalLayout;
+    @BindView(R.id.member_profile_image_icon) SelectableRoundedImageView memberProfileImageIcon;
+    @BindView(R.id.member_profile_image_bg) ImageView memberProfileImageBg;
+    @BindView(R.id.verticalLayout) LinearLayout verticalLayout;
 
     // Whatsapp
-    @BindView(R.id.member_profile_whatsapp_card_view)
-    CardView whatsAppCard;
-    @BindView(R.id.whatsapp_message)
-    LinearLayout whatsAppMessage;
-    @BindView(R.id.whatsapp_voice_call)
-    LinearLayout whatsAppVoiceCall;
-    @BindView(R.id.whatsapp_video_call)
-    LinearLayout whatsAppVideoCall;
+    @BindView(R.id.member_profile_whatsapp_card_view) CardView whatsAppCard;
+    @BindView(R.id.whatsapp_message) LinearLayout whatsAppMessage;
+    @BindView(R.id.whatsapp_voice_call) LinearLayout whatsAppVoiceCall;
+    @BindView(R.id.whatsapp_video_call) LinearLayout whatsAppVideoCall;
     // Whatsapp text
-    @BindView(R.id.member_profile_whatsapp_message)
-    TextView whatsAppMessageText;
-    @BindView(R.id.member_profile_whatsapp_voice_call)
-    TextView whatsAppVoiceText;
-    @BindView(R.id.member_profile_whatsapp_video_call)
-    TextView whatsAppVideoText;
+    @BindView(R.id.member_profile_whatsapp_message) TextView whatsAppMessageText;
+    @BindView(R.id.member_profile_whatsapp_voice_call) TextView whatsAppVoiceText;
+    @BindView(R.id.member_profile_whatsapp_video_call) TextView whatsAppVideoText;
 
     private boolean isWhatsAppNumber = false;
     private String whatsAppId;
-    private final static String PATH = "/LIC DIARY";
     private Unbinder unbinder;
     private Member member;
     private Policy policy;
-    Cursor cursor;
-
     private static final int EDIT_MEMBER = 0;
 
     @Override

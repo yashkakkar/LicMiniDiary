@@ -249,7 +249,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // updateMembers
-    public boolean updateMember(Member member, Long memberId){
+    public boolean updateMember(Member member){
         SQLiteDatabase db = getDatabase(true);
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_MEMBER_ID, member.getMemberId());
@@ -261,7 +261,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         initialValues.put(KEY_MEMBER_IMAGE_NAME, member.getMemberImageName());
         initialValues.put(KEY_MEMBER_IMAGE_FILE, member.getMemberImageFile());
         initialValues.put(KEY_MEMBER_FAV, member.getMemberFav());
-        db.update(TABLE_MEMBERS, initialValues, KEY_MEMBER_ID + "=" + memberId, null);
+        db.update(TABLE_MEMBERS, initialValues, KEY_MEMBER_ID + "=" + member.getMemberId(), null);
         return true;
     }
 

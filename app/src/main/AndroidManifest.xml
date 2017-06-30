@@ -90,7 +90,9 @@
             android:label="Policy Holder Profile"
             android:parentActivityName=".ActivityDashboard"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EditMember"></activity>
+        <activity
+            android:name=".EditMember"
+            android:parentActivityName=".MemberProfileView"/>
     </application>
 
 </manifest>

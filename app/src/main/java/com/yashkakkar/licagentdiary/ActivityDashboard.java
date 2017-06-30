@@ -193,7 +193,7 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
                         listDuePoliciesFragment = ListDuePoliciesFragment.newInstance(LIST_DUE_POLICIES_FRAGMENT);
                     }
                     transaction.replace(R.id.fragment_content, listDuePoliciesFragment,LIST_DUE_POLICIES_FRAGMENT).commit();
-                    addPolicies.show();
+                    addPolicies.hide();
                     addMember.hide();
                     addNotes.hide();
                 }
@@ -207,7 +207,6 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
                     addMember.hide();
                     addNotes.hide();
                 }
-
                 if (position == 3) {
                     // Notes fragment
                     if ( listNotesFragment == null){

@@ -10,6 +10,7 @@ public interface Constants {
     String EXTERNAL_STORAGE_FOLDER = "lic Agent Diary";
     String PACKAGE = "com.yashkakkar.licagentdiary";
     String PREFS_NAME = PACKAGE + "_preferences";
+    String PATH = "/LIC DIARY";
 
     //fragment TAGS
 

@@ -32,7 +32,6 @@ public class SaveNewMemberTask extends AsyncTask<Member,Void,Member> {
         return member;
     }
 
-
     @Override
     protected void onPostExecute(Member member) {
         super.onPostExecute(member);
