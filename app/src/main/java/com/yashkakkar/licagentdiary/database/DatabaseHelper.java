@@ -348,6 +348,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return policies;
     }
 
+    public List<Policy> getMemberPolicies(String memberId){
+        List<Policy>  policies = new ArrayList<>();
+        SQLiteDatabase db = getDatabase(true);
+        Cursor cursor = db.query(TABLE_POLICIES, new String[]{
+                KEY_MEMBER_ID, KEY_POLICY_ID, KEY_POLICY_NAME, KEY_POLICY_NUMBER,
+                KEY_POLICY_DOC_DATE, KEY_POLICY_DLP_DATE, KEY_POLICY_DOM_DATE,
+                KEY_POLICY_DOB_DATE, KEY_POLICY_FUP, KEY_POLICY_TERM, KEY_POLICY_MODE,
+                KEY_POLICY_SUM_ASSURED_AMOUNT, KEY_POLICY_PREMIUM_AMOUNT, KEY_POLICY_NOMINEE_NAME,
+                KEY_POLICY_MARKED, KEY_POLICY_BOOK_MARKED, KEY_POLICY_STATUS},KEY_MEMBER_ID + "=" + memberId,null,null,null,null);
+
+        if (cursor.moveToFirst()){
+            do {
+                String member_id = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_MEMBER_ID));
+                String policy_id = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_ID));
+                String policy_name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_NAME));
+                String policy_number = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_NUMBER));
+                String policy_doc_date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_DOC_DATE));
+                String policy_dlp_date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_DLP_DATE));
+                String policy_dom_date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_DOM_DATE));
+                String policy_dob_date = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_DOB_DATE));
+                String policy_fup = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_FUP));
+                String policy_term = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_TERM));
+                String policy_mode = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_MODE));
+                String policy_sa_amount = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_SUM_ASSURED_AMOUNT));
+                String policy_premium_amount = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_PREMIUM_AMOUNT));
+                String policy_nominee_name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_NOMINEE_NAME));
+                int policy_marked = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_MARKED));
+                int policy_bookmarked = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_BOOK_MARKED));
+                int policy_status = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.KEY_POLICY_STATUS));
+                Policy policy = new
+                        Policy(member_id,policy_id,policy_name,
+                        policy_number,policy_doc_date,policy_dlp_date,
+                        policy_dom_date,policy_dob_date,policy_fup,policy_term,policy_mode,
+                        policy_sa_amount,policy_premium_amount,policy_nominee_name,
+                        policy_marked,policy_bookmarked,policy_status);
+                policies.add(policy);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return policies;
+    }
+
     public boolean updatePolicy(Policy policy, String policy_id){
         SQLiteDatabase db = getDatabase(true);
         ContentValues initialValues = new ContentValues();

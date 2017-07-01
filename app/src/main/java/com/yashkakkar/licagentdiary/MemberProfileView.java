@@ -14,6 +14,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,14 +29,22 @@ import android.widget.ToggleButton;
 
 import com.joooonho.SelectableRoundedImageView;
 import com.yashkakkar.licagentdiary.async.IsWhatsAppNumber;
+import com.yashkakkar.licagentdiary.async.eventbus.GetMemberPoliciesListEvent;
 import com.yashkakkar.licagentdiary.async.eventbus.IsWhatsAppNumberEvent;
+import com.yashkakkar.licagentdiary.async.policy.GetMemberPoliciesListTask;
 import com.yashkakkar.licagentdiary.database.DatabaseHelper;
+import com.yashkakkar.licagentdiary.models.Adapters.PoliciesAdapter;
+import com.yashkakkar.licagentdiary.models.Adapters.PolicyListAdapter;
 import com.yashkakkar.licagentdiary.models.Member;
 import com.yashkakkar.licagentdiary.models.Policy;
 import com.yashkakkar.licagentdiary.utils.BitmapUtility;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -70,6 +80,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
     @BindView(R.id.member_profile_whatsapp_voice_call) TextView whatsAppVoiceText;
     @BindView(R.id.member_profile_whatsapp_video_call) TextView whatsAppVideoText;
 
+    @BindView(R.id.member_policies_list_view) RecyclerView memberPolicyListView;
     private boolean isWhatsAppNumber = false;
     private String whatsAppId;
     private Unbinder unbinder;
@@ -204,6 +215,11 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
             }
         });*/
 
+        // show no. of policy belongs to a particular member with option of view,share, edit, delete
+
+        GetMemberPoliciesListTask getMemberPoliciesListTask = new GetMemberPoliciesListTask(this);
+        getMemberPoliciesListTask.execute(member.getMemberId());
+
     }
 
     @Subscribe
@@ -218,6 +234,15 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
        }
     }
 
+    @Subscribe
+    public void onEvent(GetMemberPoliciesListEvent event){
+        // get policies
+        List<Policy> policyList = event.getPolicies();
+        // set adapter
+        PoliciesAdapter policyListAdapter = new PoliciesAdapter(this,policyList);
+        memberPolicyListView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        memberPolicyListView.setAdapter(policyListAdapter);
+    }
     @Override
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);

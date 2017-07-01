@@ -113,4 +113,5 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.My
             ButterKnife.bind(this, itemView);
         }
     }
+
 }

@@ -311,5 +311,4 @@ public class EditMember extends AppCompatActivity {
         return "";
     }
 
-
 }
