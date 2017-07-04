@@ -17,6 +17,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -238,7 +239,7 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
             @Override
             public void onTabUnselected(int position) {
                // Log.d("BOTTOM NAVIGATION", "onTabUnselected() called with: " + "position = [" + position + "]");
-        /*
+                /*
                if ( position == 0){
 
                }
@@ -251,10 +252,9 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
                if (position == 3){
 
                }
+               if (position == 4){
 
-                if (position == 4){
-
-                }*/
+               }*/
             }
 
             @Override
@@ -321,7 +321,6 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
                     return;
                 }
                 requestPermissions(new String[]{Manifest.permission.CALL_PHONE},REQUEST_CODE_ASK_PERMISSIONS);
-                return;
             }
         }
 
@@ -477,6 +476,8 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
             case R.id.share:
                 break;
             case R.id.setting:
+                                Intent intent = new Intent(this,SettingsActivity.class);
+                                startActivity(intent);
                 break;
             default:
                 break;

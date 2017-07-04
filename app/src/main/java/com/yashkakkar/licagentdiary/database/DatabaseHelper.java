@@ -356,7 +356,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 KEY_POLICY_DOC_DATE, KEY_POLICY_DLP_DATE, KEY_POLICY_DOM_DATE,
                 KEY_POLICY_DOB_DATE, KEY_POLICY_FUP, KEY_POLICY_TERM, KEY_POLICY_MODE,
                 KEY_POLICY_SUM_ASSURED_AMOUNT, KEY_POLICY_PREMIUM_AMOUNT, KEY_POLICY_NOMINEE_NAME,
-                KEY_POLICY_MARKED, KEY_POLICY_BOOK_MARKED, KEY_POLICY_STATUS},KEY_MEMBER_ID + "=" + memberId,null,null,null,null);
+                KEY_POLICY_MARKED, KEY_POLICY_BOOK_MARKED, KEY_POLICY_STATUS},"member_id = ?",new String[] {memberId},null,null,null);
 
         if (cursor.moveToFirst()){
             do {

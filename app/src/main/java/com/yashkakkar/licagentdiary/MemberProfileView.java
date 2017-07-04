@@ -86,6 +86,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
     private Unbinder unbinder;
     private Member member;
     private Policy policy;
+    private List<Policy> policyList;
     private static final int EDIT_MEMBER = 0;
 
     @Override
@@ -216,10 +217,13 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
         });*/
 
         // show no. of policy belongs to a particular member with option of view,share, edit, delete
-
         GetMemberPoliciesListTask getMemberPoliciesListTask = new GetMemberPoliciesListTask(this);
         getMemberPoliciesListTask.execute(member.getMemberId());
 
+        policyList = new ArrayList<>();
+        PoliciesAdapter policyListAdapter = new PoliciesAdapter(this,policyList);
+        memberPolicyListView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        memberPolicyListView.setAdapter(policyListAdapter);
     }
 
     @Subscribe
@@ -237,12 +241,13 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
     @Subscribe
     public void onEvent(GetMemberPoliciesListEvent event){
         // get policies
-        List<Policy> policyList = event.getPolicies();
+        policyList = event.getPolicies();
         // set adapter
         PoliciesAdapter policyListAdapter = new PoliciesAdapter(this,policyList);
         memberPolicyListView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         memberPolicyListView.setAdapter(policyListAdapter);
     }
+
     @Override
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);

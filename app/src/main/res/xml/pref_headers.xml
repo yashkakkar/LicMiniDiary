@@ -4,7 +4,7 @@
 
     <header
         android:fragment="com.yashkakkar.licagentdiary.SettingsActivity$GeneralPreferenceFragment"
-        android:icon="@drawable/ic_info_black_24dp"
+        android:icon="@drawable/ic_settings_black_24dp"
         android:title="@string/pref_header_general" />
 
     <header
@@ -16,5 +16,18 @@
         android:fragment="com.yashkakkar.licagentdiary.SettingsActivity$DataSyncPreferenceFragment"
         android:icon="@drawable/ic_sync_black_24dp"
         android:title="@string/pref_header_data_sync" />
+
+    <header
+        android:fragment=""
+        android:icon="@drawable/ic_color_lens_black_24dp"
+        android:title="@string/pref_header_appearance"/>
+
+    <header
+        android:icon="@drawable/ic_language_black_24dp"
+        android:title="@string/pref_header_app_language"/>
+
+    <header
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/pref_header_about"/>
 
 </preference-headers>
