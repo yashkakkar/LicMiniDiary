@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yashkakkar.licagentdiary.ViewPolicyHolderDetails">
+    tools:context="com.yashkakkar.licagentdiary.ViewPolicy">
 
 </android.support.constraint.ConstraintLayout>

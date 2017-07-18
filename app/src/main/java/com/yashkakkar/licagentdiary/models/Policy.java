@@ -36,6 +36,7 @@ public class Policy implements Comparable<Policy>{
     public Policy(){
 
     }
+
     public Policy(String memberId, String policyId, String policyName, String policyNumber, String docDate, String dlpDate, String domDate, String dobDate,String fup, String termTable, String mode, String saAmount, String premiumAmount, String nomineeName) {
         this.memberId = memberId;
         this.policyId = policyId;

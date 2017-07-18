@@ -242,10 +242,14 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
     public void onEvent(GetMemberPoliciesListEvent event){
         // get policies
         policyList = event.getPolicies();
-        // set adapter
-        PoliciesAdapter policyListAdapter = new PoliciesAdapter(this,policyList);
-        memberPolicyListView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        memberPolicyListView.setAdapter(policyListAdapter);
+        if(policyList.isEmpty()){
+            // Add a button to add new policy to this member
+        }else {
+            // set adapter
+            PoliciesAdapter policyListAdapter = new PoliciesAdapter(this,policyList);
+            memberPolicyListView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+            memberPolicyListView.setAdapter(policyListAdapter);
+        }
     }
 
     @Override

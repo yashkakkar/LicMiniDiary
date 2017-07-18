@@ -103,13 +103,11 @@
         android:src="@android:drawable/ic_dialog_email"
         app:layout_behavior="com.yashkakkar.licagentdiary.utils.ScrollAwareFabBehaviour"/>
 
-
-    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />
-
 
     <!-- <com.roughike.bottombar.BottomBar
          android:id="@+id/bottom_navigation_bar"

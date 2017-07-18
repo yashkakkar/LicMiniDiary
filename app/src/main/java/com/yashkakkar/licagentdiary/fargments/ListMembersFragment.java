@@ -21,7 +21,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.yashkakkar.licagentdiary.R;
 import com.yashkakkar.licagentdiary.async.eventbus.GetMemberListEvent;
 import com.yashkakkar.licagentdiary.async.member.GetMemberListTask;
-import com.yashkakkar.licagentdiary.helpers.AlertDialogHelper;
 import com.yashkakkar.licagentdiary.models.Adapters.MemberListAdapter;
 import com.yashkakkar.licagentdiary.models.Adapters.TouchListener.RecyclerItemClickListener;
 import com.yashkakkar.licagentdiary.models.Member;
@@ -146,11 +145,9 @@ public class ListMembersFragment extends Fragment {
         memberListAdapter = new MemberListAdapter(getActivity(),members);
         memberListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         memberListView.setAdapter(memberListAdapter);
-        if (members != null){
+        if (members.isEmpty()){
            // Toast.makeText(getActivity(),"LIST NOT NULL!",Toast.LENGTH_SHORT).show();
-            relativeLayout.removeAllViews();
-        }else {
-            memberListView.removeAllViews();
+            relativeLayout.setVisibility(View.VISIBLE);
         }
 
         memberListView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(),memberListView, new RecyclerItemClickListener.OnItemClickListener() {

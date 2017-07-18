@@ -3,6 +3,7 @@ package com.yashkakkar.licagentdiary.fargments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +13,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.yashkakkar.licagentdiary.R;
 import com.yashkakkar.licagentdiary.async.eventbus.GetMemberListEvent;
-import com.yashkakkar.licagentdiary.async.eventbus.GetPoicyListEvent;
+import com.yashkakkar.licagentdiary.async.eventbus.GetPolicyListEvent;
 import com.yashkakkar.licagentdiary.async.member.GetMemberListTask;
 import com.yashkakkar.licagentdiary.async.policy.GetPolicyListTask;
 import com.yashkakkar.licagentdiary.models.Adapters.PolicyListAdapter;
@@ -28,7 +30,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.text.ParseException;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,6 +45,7 @@ public class ListPoliciesFragment extends Fragment {
 
     @BindView(R.id.empty_list_policies_fragment) RelativeLayout emptyListPolicy;
     @BindView(R.id.policiesListView) RecyclerView policyListView;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
     Unbinder unbinder;
     List<Member> members;
     List<Policy> policies;
@@ -59,7 +61,6 @@ public class ListPoliciesFragment extends Fragment {
 
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,17 +72,22 @@ public class ListPoliciesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_list_policies,container,false);
         unbinder = ButterKnife.bind(this,v);
         EventBus.getDefault().register(this);
+        progressBar = new ProgressBar(getActivity());
+        progressBar.setVisibility(View.VISIBLE);
+        /*
 
         members = Collections.emptyList();
         policies = Collections.emptyList();
         policyListAdapter = new PolicyListAdapter(getActivity(),members,policies);
         policyListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         policyListView.setAdapter(policyListAdapter);
+*/
 
         GetMemberListTask getMemberListTask = new GetMemberListTask(getActivity());
         getMemberListTask.execute();
         GetPolicyListTask getPolicyListTask = new GetPolicyListTask(getActivity());
         getPolicyListTask.execute();
+
         return v;
     }
 
@@ -119,16 +125,52 @@ public class ListPoliciesFragment extends Fragment {
     }
 
     @Subscribe
-    public void onEvent(GetPoicyListEvent event) throws ParseException {
-       // get the policies from the database
+    public void onEvent(GetPolicyListEvent event) throws ParseException {
+        // get the policies from the database
         policies = event.getPolicies();
-       // make adapter class
+        // make adapter class
         policyListMonthWiseSortAdapter = new PolicyListMonthWiseSortAdapter(getActivity(),members,policies);
-       policyListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-       policyListView.setAdapter(policyListMonthWiseSortAdapter);
-        if (policyListView != null){
-            emptyListPolicy.removeAllViews();
+        policyListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        policyListView.setAdapter(policyListMonthWiseSortAdapter);
+        if (policies.isEmpty()){
+            // Create a Handler instance on the main thread
+            final Handler handler = new Handler();
+            // Create and start a new Thread
+            new Thread(new Runnable() {
+                public void run() {
+                    try{Thread.sleep(1000);}
+                    catch (Exception e) { } // Just catch the InterruptedException
+                    // Now we use the Handler to post back to the main thread
+                    handler.post(new Runnable() {
+                        public void run() {
+                            // Set the View's visibility back on the main UI Thread
+                            progressBar.setVisibility(View.INVISIBLE);
+                            emptyListPolicy.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+            }).start();
+            handler.removeCallbacksAndMessages(null);
+        }else{
+            // Create a Handler instance on the main thread
+            final Handler handler = new Handler();
+            // Create and start a new Thread
+            new Thread(new Runnable() {
+                public void run() {
+                    try{Thread.sleep(3000);}
+                    catch (Exception e) { } // Just catch the InterruptedException
+                    // Now we use the Handler to post back to the main thread
+                    handler.post(new Runnable() {
+                        public void run() {
+                            // Set the View's visibility back on the main UI Thread
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                }
+            }).start();
+            handler.removeCallbacksAndMessages(null);
         }
+
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

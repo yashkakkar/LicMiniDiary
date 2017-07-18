@@ -3,6 +3,7 @@ package com.yashkakkar.licagentdiary.fargments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.yashkakkar.licagentdiary.R;
@@ -38,6 +40,8 @@ public class ListNotesFragment extends Fragment {
 
     @BindView(R.id.notesListView) RecyclerView notesListView;
     @BindView(R.id.empty_list_notes_fragment) RelativeLayout emptyNoteFragment;
+    @BindView(R.id.progress_bar_notes) ProgressBar progressBar;
+
     List<Note> notes;
     NoteListAdapter noteListAdapter;
     Unbinder unbinder;
@@ -66,11 +70,12 @@ public class ListNotesFragment extends Fragment {
         unbinder = ButterKnife.bind(this,v);
         EventBus.getDefault().register(this);
 
-        notes = Collections.emptyList();
+     /*   notes = Collections.emptyList();
         noteListAdapter = new NoteListAdapter(getActivity(),notes);
         notesListView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
         notesListView.setAdapter(noteListAdapter);
-
+    */
+        progressBar.setVisibility(View.VISIBLE);
         GetNotesListTask getNotesListTask = new GetNotesListTask(getActivity());
         getNotesListTask.execute();
         return v;
@@ -109,8 +114,43 @@ public class ListNotesFragment extends Fragment {
         noteListAdapter = new NoteListAdapter(getActivity(),notes);
         notesListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         notesListView.setAdapter(noteListAdapter);
-        if (notesListView!= null){
-            emptyNoteFragment.removeAllViews();
+        if (notes.isEmpty()){
+            // Create a Handler instance on the main thread
+            final Handler handler = new Handler();
+            // Create and start a new Thread
+            new Thread(new Runnable() {
+                public void run() {
+                    try{Thread.sleep(1000);}
+                    catch (Exception e) { } // Just catch the InterruptedException
+                    // Now we use the Handler to post back to the main thread
+                    handler.post(new Runnable() {
+                        public void run() {
+                            // Set the View's visibility back on the main UI Thread
+                            progressBar.setVisibility(View.INVISIBLE);
+                            emptyNoteFragment.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+            }).start();
+            handler.removeCallbacksAndMessages(null);
+        }else {
+            // Create a Handler instance on the main thread
+            final Handler handler = new Handler();
+            // Create and start a new Thread
+            new Thread(new Runnable() {
+                public void run() {
+                    try{Thread.sleep(3000);}
+                    catch (Exception e) { } // Just catch the InterruptedException
+                    // Now we use the Handler to post back to the main thread
+                    handler.post(new Runnable() {
+                        public void run() {
+                            // Set the View's visibility back on the main UI Thread
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                }
+            }).start();
+            handler.removeCallbacksAndMessages(null);
         }
     }
 

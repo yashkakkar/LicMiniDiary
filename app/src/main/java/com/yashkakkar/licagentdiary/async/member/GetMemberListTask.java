@@ -22,7 +22,7 @@ public class GetMemberListTask extends AsyncTask<Void,Void, List<Member>>{
 
     private Context context;
     private List<Member> members;
-    private ProgressDialog dialog;
+    //private ProgressDialog dialog;
 
     public GetMemberListTask(Context context){
         this.context = context;
@@ -35,9 +35,9 @@ public class GetMemberListTask extends AsyncTask<Void,Void, List<Member>>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        dialog = new ProgressDialog(context);
+        /*dialog = new ProgressDialog(context);
         dialog.setMessage("Loading...");
-        dialog.show();
+        dialog.show();*/
     }
 
     @Override
@@ -50,7 +50,7 @@ public class GetMemberListTask extends AsyncTask<Void,Void, List<Member>>{
     @Override
     protected void onPostExecute(List<Member> members) {
         super.onPostExecute(members);
-        dialog.dismiss();
+        //dialog.dismiss();
         // post the event
         EventBus.getDefault().post(new GetMemberListEvent(members));
     }

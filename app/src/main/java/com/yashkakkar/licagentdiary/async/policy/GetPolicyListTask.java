@@ -3,7 +3,7 @@ package com.yashkakkar.licagentdiary.async.policy;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.yashkakkar.licagentdiary.async.eventbus.GetPoicyListEvent;
+import com.yashkakkar.licagentdiary.async.eventbus.GetPolicyListEvent;
 import com.yashkakkar.licagentdiary.database.DatabaseHelper;
 import com.yashkakkar.licagentdiary.models.Policy;
 
@@ -36,6 +36,6 @@ public class GetPolicyListTask extends AsyncTask<Void,Void, List<Policy>>{
     @Override
     protected void onPostExecute(List<Policy> policies) {
         super.onPostExecute(policies);
-        EventBus.getDefault().post(new GetPoicyListEvent(policies));
+        EventBus.getDefault().post(new GetPolicyListEvent(policies));
     }
 }

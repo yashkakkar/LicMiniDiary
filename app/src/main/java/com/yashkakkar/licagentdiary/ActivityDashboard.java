@@ -51,6 +51,7 @@ import com.yashkakkar.licagentdiary.fargments.ListPoliciesFragment;
 import com.yashkakkar.licagentdiary.login.AgentRegistration;
 import com.yashkakkar.licagentdiary.models.User;
 import com.yashkakkar.licagentdiary.receivers.MyReceiver;
+import com.yashkakkar.licagentdiary.utils.ThemeUtils;
 
 import java.util.Map;
 
@@ -80,11 +81,11 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
     private TextView userName;
     private TextView userEmailId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
+       // ThemeUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_dashboard);
         // initializing user interface
         initUI();
@@ -160,9 +161,9 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
                 .initialise();
         //bottomNavigationBar.setFab(addPolicies);
         //bottomNavigationBar.setFab(addNotes);
-        bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        bottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
-        bottomNavigationBar.setBackgroundColor(getResources().getColor(R.color.white));
+        bottomNavigationBar.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
         bottomNavigationBar
                 .setActiveColor(R.color.white)
                 .setInActiveColor(R.color.colorPrimaryDark)
@@ -457,7 +458,6 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         switch (id){
             case R.id.all_policy_holders:
                 break;
@@ -476,8 +476,8 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
             case R.id.share:
                 break;
             case R.id.setting:
-                                Intent intent = new Intent(this,SettingsActivity.class);
-                                startActivity(intent);
+                              Intent intent = new Intent(this,SettingsActivity.class);
+                              startActivity(intent);
                 break;
             default:
                 break;

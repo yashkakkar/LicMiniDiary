@@ -18,15 +18,17 @@
         android:title="@string/pref_header_data_sync" />
 
     <header
-        android:fragment=""
+        android:fragment="com.yashkakkar.licagentdiary.SettingsActivity$AppearancePreferenceFragment"
         android:icon="@drawable/ic_color_lens_black_24dp"
         android:title="@string/pref_header_appearance"/>
 
     <header
+        android:fragment="com.yashkakkar.licagentdiary.SettingsActivity$AppLanguagePreferenceFragment"
         android:icon="@drawable/ic_language_black_24dp"
         android:title="@string/pref_header_app_language"/>
 
     <header
+        android:fragment="com.yashkakkar.licagentdiary.SettingsActivity$AboutPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/pref_header_about"/>
 

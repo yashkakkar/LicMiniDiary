@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Light Theme Color -->
     <color name="colorPrimary">#607d8b</color>
     <color name="colorPrimaryDark">#556080</color>
     <color name="colorAccent">#448aff</color>
@@ -8,6 +9,18 @@
     <color name="secondaryText">#757575</color>
     <color name="dividerColor">#BDBDBD</color>
     <color name="rippleColor">#757575</color>
+
+
+    <!-- App Dark Theme Color -->
+    <color name="colorPrimaryThemeDark">#263238</color>
+    <color name="colorPrimaryDarkThemeDark">#000a12</color>
+    <color name="colorAccentThemeDark">#448aff</color>
+    <color name="lightPrimaryColorThemeDark">#4f5b62</color>
+    <color name="primaryTextThemeDark">#ffffff</color>
+    <color name="secondaryTextThemeDark">#5e92f3</color>
+    <color name="dividerColorThemeDark">#BDBDBD</color>
+    <color name="rippleColorThemeDark">#757575</color>
+
 
     <color name="white">#fff</color>
 

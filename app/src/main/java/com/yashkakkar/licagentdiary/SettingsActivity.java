@@ -256,13 +256,37 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     /**
      * This fragment change the appearance of the app by changing the theme to dark from light or light from dark
      */
-    public static class Apperance extends PreferenceFragment{
+    public static class AppearancePreferenceFragment extends PreferenceFragment{
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_appearance);
             setHasOptionsMenu(true);
 
+        }
+    }
+
+    /**
+     * This fragment change the App language
+     * */
+    public static class AppLanguagePreferenceFragment extends PreferenceFragment{
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_app_language);
+            setHasOptionsMenu(true);
+        }
+    }
+
+    /**
+     * This fragment shows all About app, privacy policy, 3rd party licences, version, etc.
+     */
+    public static class AboutPreferenceFragment extends PreferenceFragment{
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_about);
+            setHasOptionsMenu(true);
         }
     }
 }
