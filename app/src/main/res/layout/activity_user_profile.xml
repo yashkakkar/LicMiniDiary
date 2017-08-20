@@ -54,28 +54,21 @@
                 android:paddingTop="25dp">
 
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/view2"
+                <com.joooonho.SelectableRoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/user_profile_image_icon"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:elevation="12dp"
-                    android:innerRadius="0dp"
-                    android:shape="ring"
-                    android:thicknessRatio="1.9"
-                    app:cardCornerRadius="25dp">
-
-                    <ImageView
-                        android:id="@+id/imageView1"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_user_account_box" />
-
-                </android.support.v7.widget.CardView>
+                    android:layout_gravity="left|center_vertical|center"
+                    android:layout_marginStart="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_member_profile_pic"
+                    app:sriv_border_color="#008fea"
+                    app:sriv_border_width="0dip"
+                    app:sriv_left_bottom_corner_radius="16dip"
+                    app:sriv_left_top_corner_radius="16dip"
+                    app:sriv_oval="true"
+                    app:sriv_right_bottom_corner_radius="16dip"
+                    app:sriv_right_top_corner_radius="16dip" />
 
             </LinearLayout>
 
@@ -100,7 +93,8 @@
                 android:clickable="true"
                 android:drawSelectorOnTop="true"
                 android:orientation="horizontal"
-                android:padding="12dp">
+                android:padding="12dp"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -110,13 +104,13 @@
                     android:src="@drawable/ic_email_grey_24dp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/user_profile_email"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="ykykakkar@gmail.com"
@@ -124,7 +118,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="Email"
@@ -132,11 +126,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_edit_grey_24dp" />
             </LinearLayout>
 
             <View
@@ -161,13 +150,13 @@
                     android:src="@drawable/ic_call_grey_24dp" />
 
                 <LinearLayout
-                    android:layout_width="238dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/user_profile_phone_number"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="917292084712"
@@ -183,11 +172,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_edit_grey_24dp" />
             </LinearLayout>
 
             <View
@@ -212,13 +196,13 @@
                     android:src="@drawable/ic_home_grey_24dp" />
 
                 <LinearLayout
-                    android:layout_width="238dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/user_profile_address"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="New Delhi, India"
@@ -226,7 +210,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="Address"
@@ -234,11 +218,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_edit_grey_24dp" />
             </LinearLayout>
 
             <View
@@ -263,13 +242,13 @@
                     android:src="@drawable/ic_assignment_ind_grey_24dp" />
 
                 <LinearLayout
-                    android:layout_width="238dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/user_proflie_gender"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="Male"
@@ -285,11 +264,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_edit_grey_24dp" />
             </LinearLayout>
 
             <View
@@ -314,13 +288,13 @@
                     android:src="@drawable/ic_email_grey_24dp" />
 
                 <LinearLayout
-                    android:layout_width="238dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/user_profile_password"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="**********"
@@ -328,7 +302,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="8dp"
                         android:text="Password"
@@ -336,11 +310,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_edit_grey_24dp" />
             </LinearLayout>
 
             <View
@@ -348,23 +317,25 @@
                 android:layout_height="0.4dp"
                 android:background="@color/dividerColor" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="25dp"
-                    android:text="Please note that we are not responsible for the information you entered in your profile. "
-                    android:textAlignment="center"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:padding="25dp"
+            android:text="Please note that we are not responsible for the information you entered in your profile. "
+            android:textAlignment="center"
+            android:textSize="10sp" />
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
 <!--
 <com.skyfishjy.library.RippleBackground

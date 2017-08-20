@@ -49,5 +49,3 @@ CREATE
         date_created TEXT,
         last_modification TEXT
     );
-
-

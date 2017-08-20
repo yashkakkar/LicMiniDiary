@@ -62,6 +62,7 @@ public class CreateNewMember extends AppCompatActivity {
     private final static String PATH = "/LIC DIARY";
     private Bitmap bitMapImage;
 
+    private boolean flag_image_selected = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -210,10 +211,10 @@ public class CreateNewMember extends AppCompatActivity {
 
                                             // DbBitmapUtility db = new DbBitmapUtility();
                                             // byte[] image = db.getByteArray(bitMapImage);
-                                            saveImage(bitMapImage);
+
                                             /*if (path0 == ""){path0 = PATH;member.setMemberImagePath(path0);}*/
                                             memberProfileIcon.setImageBitmap(bitMapImage);
-
+                                            flag_image_selected = true;
                                             // Log.v("Image saved at: ",path0);
                                             Toast.makeText(this,"Image Loaded from camera!", Toast.LENGTH_SHORT).show();
                                             break;
@@ -228,7 +229,7 @@ public class CreateNewMember extends AppCompatActivity {
                                             }
 
                                             memberProfileIcon.setImageBitmap(bitMapImage);
-                                            saveImage(bitMapImage);
+                                            flag_image_selected = true;
                                             //Log.v("Image saved at: ",path1);
                                             Toast.makeText(this,"Image Loaded from gallery", Toast.LENGTH_SHORT).show();
                                             break;
@@ -277,13 +278,12 @@ public class CreateNewMember extends AppCompatActivity {
     private Member getMemberData(){
         String name = memberName.getText().toString();
         Log.v("Member Name ",name);
-        Toast.makeText(CreateNewMember.this,"name "+name,Toast.LENGTH_SHORT).show();
+        Toast.makeText(CreateNewMember.this,name+"! Added as a Contact",Toast.LENGTH_SHORT).show();
         // check if the name is empty or not
         if (!TextUtils.isEmpty(name)){
             member.setMemberName(memberName.getText().toString());
             // generate a member id
             member.setMemberId(memberEmail.getText().toString());
-
         } else{
             // display a message name field is empty
             Toast.makeText(CreateNewMember.this,"Name Field is empty",Toast.LENGTH_SHORT).show();
@@ -291,7 +291,9 @@ public class CreateNewMember extends AppCompatActivity {
         member.setMemberPhoneNumber(memberPhone.getText().toString());
         member.setMemberEmailId(memberEmail.getText().toString());
         member.setMemberFav(0);
-        saveImage(bitMapImage);
+        if (flag_image_selected){
+            saveImage(bitMapImage); // save image to the directory
+        } // do not save any image to the directory
         member.setMemberGender("");
         return member;
     }

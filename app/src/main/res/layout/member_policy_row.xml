@@ -98,14 +98,14 @@
                         android:id="@+id/m_sa_amt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/m_policy_number"
-                        android:layout_marginEnd="17dp"
-                        android:layout_marginRight="17dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
                         android:text="SA AMOUNT"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_below="@+id/m_policy_number"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
 
                     <TextView
                         android:id="@+id/m_policy_number"

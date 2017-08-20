@@ -108,10 +108,12 @@ public class PolicyListMonthWiseSortAdapter extends RecyclerView.Adapter<Recycle
     @Override
     public int getItemViewType(int position) {
       int viewType = VIEW_TYPE_FIRST;
-        if (getDateViewHolderSection(position))
+        if (getDateViewHolderSection(position)){
             return viewType;
-        else
+        }
+        else {
             viewType = VIEW_TYPE_SECOND;
+        }
         return viewType;
     }
 
@@ -198,10 +200,11 @@ public class PolicyListMonthWiseSortAdapter extends RecyclerView.Adapter<Recycle
     public boolean getDateViewHolderSection(int position) {
         if (position == nextpos){ // 0
             nextpos = getPositionOfDateHolder(position); // 4 9 15
+            flag = false;
+        }
+        else { // 1 2 3   5 6 7 8   10 11 12 13 14    16 17 18
             flag = true;
         }
-        else // 1 2 3   5 6 7 8   10 11 12 13 14    16 17 18
-            flag = false;
         return flag;
     }
 

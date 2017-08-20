@@ -53,6 +53,7 @@ public class ListPoliciesFragment extends Fragment {
     PolicyListAdapter policyListAdapter;
     PolicyListMonthWiseSortAdapter policyListMonthWiseSortAdapter;
 
+    Handler handler;
     public static ListPoliciesFragment newInstance(){
         return new ListPoliciesFragment();
     }
@@ -74,14 +75,14 @@ public class ListPoliciesFragment extends Fragment {
         EventBus.getDefault().register(this);
         progressBar = new ProgressBar(getActivity());
         progressBar.setVisibility(View.VISIBLE);
+        handler = new Handler();
         /*
-
         members = Collections.emptyList();
         policies = Collections.emptyList();
         policyListAdapter = new PolicyListAdapter(getActivity(),members,policies);
         policyListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         policyListView.setAdapter(policyListAdapter);
-*/
+        */
 
         GetMemberListTask getMemberListTask = new GetMemberListTask(getActivity());
         getMemberListTask.execute();
@@ -129,12 +130,10 @@ public class ListPoliciesFragment extends Fragment {
         // get the policies from the database
         policies = event.getPolicies();
         // make adapter class
-        policyListMonthWiseSortAdapter = new PolicyListMonthWiseSortAdapter(getActivity(),members,policies);
+        policyListAdapter = new PolicyListAdapter(getActivity(),members,policies);
         policyListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        policyListView.setAdapter(policyListMonthWiseSortAdapter);
+        policyListView.setAdapter(policyListAdapter);
         if (policies.isEmpty()){
-            // Create a Handler instance on the main thread
-            final Handler handler = new Handler();
             // Create and start a new Thread
             new Thread(new Runnable() {
                 public void run() {
@@ -150,10 +149,7 @@ public class ListPoliciesFragment extends Fragment {
                     });
                 }
             }).start();
-            handler.removeCallbacksAndMessages(null);
         }else{
-            // Create a Handler instance on the main thread
-            final Handler handler = new Handler();
             // Create and start a new Thread
             new Thread(new Runnable() {
                 public void run() {
@@ -168,9 +164,8 @@ public class ListPoliciesFragment extends Fragment {
                     });
                 }
             }).start();
-            handler.removeCallbacksAndMessages(null);
         }
-
+        handler.removeCallbacksAndMessages(null);
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

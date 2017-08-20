@@ -45,7 +45,7 @@ public class ListNotesFragment extends Fragment {
     List<Note> notes;
     NoteListAdapter noteListAdapter;
     Unbinder unbinder;
-
+    Handler handler;
     public static ListNotesFragment newInstance(String param1){
         ListNotesFragment fragment = new ListNotesFragment();
         Bundle args = new Bundle();
@@ -70,12 +70,13 @@ public class ListNotesFragment extends Fragment {
         unbinder = ButterKnife.bind(this,v);
         EventBus.getDefault().register(this);
 
+        handler = new Handler();
      /*   notes = Collections.emptyList();
         noteListAdapter = new NoteListAdapter(getActivity(),notes);
         notesListView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
         notesListView.setAdapter(noteListAdapter);
     */
-        progressBar.setVisibility(View.VISIBLE);
+       // progressBar.setVisibility(View.VISIBLE);
         GetNotesListTask getNotesListTask = new GetNotesListTask(getActivity());
         getNotesListTask.execute();
         return v;
@@ -115,9 +116,7 @@ public class ListNotesFragment extends Fragment {
         notesListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         notesListView.setAdapter(noteListAdapter);
         if (notes.isEmpty()){
-            // Create a Handler instance on the main thread
-            final Handler handler = new Handler();
-            // Create and start a new Thread
+           // Create and start a new Thread
             new Thread(new Runnable() {
                 public void run() {
                     try{Thread.sleep(1000);}
@@ -126,7 +125,7 @@ public class ListNotesFragment extends Fragment {
                     handler.post(new Runnable() {
                         public void run() {
                             // Set the View's visibility back on the main UI Thread
-                            progressBar.setVisibility(View.INVISIBLE);
+                         //   progressBar.setVisibility(View.INVISIBLE);
                             emptyNoteFragment.setVisibility(View.VISIBLE);
                         }
                     });
@@ -134,8 +133,6 @@ public class ListNotesFragment extends Fragment {
             }).start();
             handler.removeCallbacksAndMessages(null);
         }else {
-            // Create a Handler instance on the main thread
-            final Handler handler = new Handler();
             // Create and start a new Thread
             new Thread(new Runnable() {
                 public void run() {
@@ -145,7 +142,7 @@ public class ListNotesFragment extends Fragment {
                     handler.post(new Runnable() {
                         public void run() {
                             // Set the View's visibility back on the main UI Thread
-                            progressBar.setVisibility(View.INVISIBLE);
+                         //  progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
                 }

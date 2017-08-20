@@ -1,5 +1,6 @@
 package com.yashkakkar.licagentdiary;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,20 +9,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.joooonho.SelectableRoundedImageView;
+
 import org.w3c.dom.Text;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class UserProfile extends AppCompatActivity {
 
-    private TextView userEmail;
-    private TextView userPass;
-    private TextView userAddress;
-    private TextView userGender;
-    private TextView userPhoneNumber;
+    @BindView(R.id.user_profile_email) TextView userEmail;
+    @BindView(R.id.user_profile_password) TextView userPass;
+    @BindView(R.id.user_profile_address) TextView userAddress;
+    @BindView(R.id.user_proflie_gender) TextView userGender;
+    @BindView(R.id.user_profile_phone_number) TextView userPhoneNumber;
+    @BindView(R.id.user_profile_image_icon) SelectableRoundedImageView userProfileImage;
+
+    private Unbinder unbinder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
+        unbinder = ButterKnife.bind(this);
         // fetch session data username and email id
 
         // Find the toolbar view inside the activity layout
@@ -40,13 +50,7 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
-        userEmail = (TextView) findViewById(R.id.user_profile_email);
-        userPass = (TextView) findViewById(R.id.user_profile_password);
-        userAddress = (TextView) findViewById(R.id.user_profile_address);
-        userGender = (TextView) findViewById(R.id.user_proflie_gender);
-        userPhoneNumber = (TextView) findViewById(R.id.user_profile_phone_number);
-
-        // fetch user data from user database table
+        // fetch user data from user database table or shared preferences
 
 
         // or fetch user data from User file offline
@@ -55,21 +59,24 @@ public class UserProfile extends AppCompatActivity {
         // set data to the user profile
 
         userEmail.setText("");
-        userPass.setText("*******");
+        userPass.setText("");
         userAddress.setText("");
         userGender.setText("");
         userPhoneNumber.setText("");
 
     }
 
-    public void findViewById() {
-
+    @Override
+    protected void onDestroy() {
+        unbinder.unbind();
+        super.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,7 +89,9 @@ public class UserProfile extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.user_profile_edit){
             // open new activity to edit existing user information
-
+            Intent intent = new Intent(this,UserProfileEdit.class);
+            startActivity(intent);
+            finish();
         }
         if (id == R.id.user_profile_logout){
             // logout the user from the app

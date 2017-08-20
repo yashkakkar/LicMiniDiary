@@ -38,6 +38,7 @@ import com.yashkakkar.licagentdiary.models.Adapters.PolicyListAdapter;
 import com.yashkakkar.licagentdiary.models.Member;
 import com.yashkakkar.licagentdiary.models.Policy;
 import com.yashkakkar.licagentdiary.utils.BitmapUtility;
+import com.yashkakkar.licagentdiary.utils.DbBitmapUtility;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -122,15 +123,15 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
         memberEmail.setText(member.getMemberEmailId());
         memberGender.setText(member.getMemberGender());
 
-        /*
-        byte[] image =  member.getMemberImageFile();
+
+        /*byte[] image =  member.getMemberImageFile();
         DbBitmapUtility dbBitmapUtility = new DbBitmapUtility();
         Bitmap imageBitmap = dbBitmapUtility.getBitmap(image);
         memberProfileImageIcon.setImageBitmap(imageBitmap);
-        */  //imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,image);
-        // bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.ic_member_profile_pic);
-        //memberProfileImageIcon.setImageBitmap(bitmap);
-        // memberProfileImageBg.setImageBitmap(bitmap);
+         */ //imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,image);
+        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(),R.drawable.ic_member_profile_pic);
+        memberProfileImageIcon.setImageBitmap(bitmap1);
+        memberProfileImageBg.setImageBitmap(bitmap1);
 
         Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + PATH + "/" + member.getMemberImageName() + ".jpg");
         if (bitmap != null) {
