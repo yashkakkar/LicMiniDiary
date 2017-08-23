@@ -1,5 +1,7 @@
 package com.yashkakkar.licagentdiary.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import java.text.ParseException;
@@ -12,7 +14,7 @@ import java.util.Locale;
  * Created by Yash Kakkar on 22-05-2017.
  */
 
-public class Policy implements Comparable<Policy>{
+public class Policy implements Comparable<Policy>, Parcelable{
 
     private String memberId; // policy associated to policyholder --> member
     private String policyId; // p1,p2,p3....
@@ -262,4 +264,73 @@ public class Policy implements Comparable<Policy>{
         }
         return 0;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * Storing the Policy data to Parcel object
+     **/
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(memberId);
+        parcel.writeString(policyId);
+        parcel.writeString(policyName);
+        parcel.writeString(policyNumber);
+        parcel.writeString(dobDate);
+        parcel.writeString(docDate);
+        parcel.writeString(dlpDate);
+        parcel.writeString(domDate);
+        parcel.writeString(fup);
+        parcel.writeString(termTable);
+        parcel.writeString(mode);
+        parcel.writeString(saAmount);
+        parcel.writeString(premiumAmount);
+        parcel.writeString(nomineeName);
+        parcel.writeInt(marked);
+        parcel.writeInt(bookMarked);
+        parcel.writeInt(policyStatus);
+    }
+
+    /**
+     * Retrieving Policy data from Parcel object
+     * This constructor is invoked by the method createFromParcel(Parcel source) of
+     * the object CREATOR
+     **/
+    public Policy(Parcel in){
+        this.memberId = in.readString();
+        this.policyId = in.readString();
+        this.policyName = in.readString();
+        this.policyNumber = in.readString();
+        this.docDate = in.readString();
+        this.dobDate = in.readString();
+        this.dlpDate = in.readString();
+        this.domDate = in.readString();
+        this.fup = in.readString();
+        this.termTable = in.readString();
+        this.mode = in.readString();
+        this.saAmount = in.readString();
+        this.premiumAmount = in.readString();
+        this.nomineeName = in.readString();
+        this.marked = in.readInt();
+        this.bookMarked = in.readInt();
+        this.policyStatus = in.readInt();
+    }
+
+    public static final Policy.Creator<Policy> CREATOR = new Parcelable.Creator<Policy>(){
+
+        @Override
+        public Policy createFromParcel(Parcel parcel) {
+            return new Policy(parcel);
+        }
+
+        @Override
+        public Policy[] newArray(int size) {
+            return new Policy[size];
+        }
+
+    };
 }

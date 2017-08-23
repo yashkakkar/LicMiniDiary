@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,9 +68,9 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.My
                         context.startActivity(intent);
                     }
                 });
-                break;
             }
             holder.policyName.setText(policy.getPolicyName());
+            Log.v("policy name", policy.getPolicyName());
             holder.policyNumber.setText(policy.getPolicyNumber());
             holder.docDate.setText(policy.getDocDate());
             holder.dlpDate.setText(policy.getDlpDate());

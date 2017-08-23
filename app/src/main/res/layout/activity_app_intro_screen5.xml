@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/screenOne"
+    android:background="@color/screenFour"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <ImageView
             android:layout_width="match_parent"
@@ -27,22 +27,20 @@
             android:id="@+id/heading1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="WELCOME TO LIC MINI DIARY :)"
+            android:text=" TAKE ONLINE/OFFLINE BACKUP OF YOUR DATA"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@android:color/background_light"
-            android:textSize="24sp"
             android:textStyle="normal|bold" />
 
         <TextView
             android:id="@+id/subheading1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
-            android:text="Save unlimited policies, manage all your contacts, make notes, search policies, take back up of your data and much more!!"
+            android:text="Save your data to your Google drive or download offline to your inernal/ external storage!"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/background_light"

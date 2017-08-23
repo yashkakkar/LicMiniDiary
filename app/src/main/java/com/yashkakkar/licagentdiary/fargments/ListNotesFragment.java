@@ -45,7 +45,7 @@ public class ListNotesFragment extends Fragment {
     List<Note> notes;
     NoteListAdapter noteListAdapter;
     Unbinder unbinder;
-    Handler handler;
+   // Handler handler;
     public static ListNotesFragment newInstance(String param1){
         ListNotesFragment fragment = new ListNotesFragment();
         Bundle args = new Bundle();
@@ -70,7 +70,7 @@ public class ListNotesFragment extends Fragment {
         unbinder = ButterKnife.bind(this,v);
         EventBus.getDefault().register(this);
 
-        handler = new Handler();
+       // handler = new Handler();
      /*   notes = Collections.emptyList();
         noteListAdapter = new NoteListAdapter(getActivity(),notes);
         notesListView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false));
@@ -116,38 +116,11 @@ public class ListNotesFragment extends Fragment {
         notesListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         notesListView.setAdapter(noteListAdapter);
         if (notes.isEmpty()){
-           // Create and start a new Thread
-            new Thread(new Runnable() {
-                public void run() {
-                    try{Thread.sleep(1000);}
-                    catch (Exception e) { } // Just catch the InterruptedException
-                    // Now we use the Handler to post back to the main thread
-                    handler.post(new Runnable() {
-                        public void run() {
-                            // Set the View's visibility back on the main UI Thread
-                         //   progressBar.setVisibility(View.INVISIBLE);
-                            emptyNoteFragment.setVisibility(View.VISIBLE);
-                        }
-                    });
-                }
-            }).start();
-            handler.removeCallbacksAndMessages(null);
+
+            progressBar.setVisibility(View.INVISIBLE);
+            emptyNoteFragment.setVisibility(View.VISIBLE);
         }else {
-            // Create and start a new Thread
-            new Thread(new Runnable() {
-                public void run() {
-                    try{Thread.sleep(3000);}
-                    catch (Exception e) { } // Just catch the InterruptedException
-                    // Now we use the Handler to post back to the main thread
-                    handler.post(new Runnable() {
-                        public void run() {
-                            // Set the View's visibility back on the main UI Thread
-                         //  progressBar.setVisibility(View.INVISIBLE);
-                        }
-                    });
-                }
-            }).start();
-            handler.removeCallbacksAndMessages(null);
+            progressBar.setVisibility(View.INVISIBLE);
         }
     }
 

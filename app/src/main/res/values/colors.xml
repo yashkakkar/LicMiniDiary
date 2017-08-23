@@ -31,23 +31,23 @@
     <color name="purple">#6A1B9A</color>
 
 
-    <color name="screenOne">#e91e63</color>
-    <color name="screenTwo">#9C27B0</color>
-    <color name="screenThree">#FF9800</color>
-    <color name="screenFour">#FFEB3B</color>
-    <color name="screenFive">#2196F3</color>
+    <color name="screenOne">#4f5b62</color>
+    <color name="screenTwo">#448aff</color>
+    <color name="screenThree">#6A1B9A</color>
+    <color name="screenFour">#2196f3</color>
+    <color name="screenFive">#4f5b62</color>
 
-    <color name="dot_dark_screenOne">#AD1457</color>
-    <color name="dot_dark_screenTwo">#6A1B9A</color>
-    <color name="dot_dark_screenThree">#EF6C00</color>
-    <color name="dot_dark_screenFour">#F9A825</color>
-    <color name="dot_dark_screenFive">#1565c0</color>
+    <color name="dot_dark_screenOne">#448aff</color>
+    <color name="dot_dark_screenTwo">#4f5b62</color>
+    <color name="dot_dark_screenThree">#4f5b62</color>
+    <color name="dot_dark_screenFour">#4f5b62</color>
+    <color name="dot_dark_screenFive">#448aff</color>
 
-    <color name="dot_light_screenOne">#F48FB1</color>
-    <color name="dot_light_screenTwo">#CE93D8</color>
-    <color name="dot_light_screenThree">#FFCC80</color>
-    <color name="dot_light_screenFour">#FFF59D</color>
-    <color name="dot_light_screenFive">#90CAF9</color>
+    <color name="dot_light_screenOne">#ffffff</color>
+    <color name="dot_light_screenTwo">#ffffff</color>
+    <color name="dot_light_screenThree">#ffffff</color>
+    <color name="dot_light_screenFour">#ffffff</color>
+    <color name="dot_light_screenFive">#ffffff</color>
 
     <array name="dot_active">
         <item>@color/dot_light_screenOne</item>

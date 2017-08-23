@@ -43,7 +43,7 @@ public class Intro extends AppCompatActivity {
         skip = (Button) findViewById(R.id.skip);
 
         layouts = new int[]{R.layout.activity_app_intro_screen1, R.layout.activity_app_intro_screen2,
-                R.layout.activity_app_intro_screen3, R.layout.activity_app_intro_screen4};
+                R.layout.activity_app_intro_screen3, R.layout.activity_app_intro_screen4, R.layout.activity_app_intro_screen5};
 
         addBottomDots(0);
         changeStatusBarColor();

@@ -51,9 +51,9 @@ public class ListPoliciesFragment extends Fragment {
     List<Policy> policies;
 
     PolicyListAdapter policyListAdapter;
-    PolicyListMonthWiseSortAdapter policyListMonthWiseSortAdapter;
+    // PolicyListMonthWiseSortAdapter policyListMonthWiseSortAdapter;
 
-    Handler handler;
+    // Handler handler;
     public static ListPoliciesFragment newInstance(){
         return new ListPoliciesFragment();
     }
@@ -75,7 +75,7 @@ public class ListPoliciesFragment extends Fragment {
         EventBus.getDefault().register(this);
         progressBar = new ProgressBar(getActivity());
         progressBar.setVisibility(View.VISIBLE);
-        handler = new Handler();
+        // handler = new Handler();
         /*
         members = Collections.emptyList();
         policies = Collections.emptyList();
@@ -85,8 +85,8 @@ public class ListPoliciesFragment extends Fragment {
         */
 
         GetMemberListTask getMemberListTask = new GetMemberListTask(getActivity());
-        getMemberListTask.execute();
         GetPolicyListTask getPolicyListTask = new GetPolicyListTask(getActivity());
+        getMemberListTask.execute();
         getPolicyListTask.execute();
 
         return v;
@@ -129,28 +129,16 @@ public class ListPoliciesFragment extends Fragment {
     public void onEvent(GetPolicyListEvent event) throws ParseException {
         // get the policies from the database
         policies = event.getPolicies();
+
         // make adapter class
         policyListAdapter = new PolicyListAdapter(getActivity(),members,policies);
         policyListView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         policyListView.setAdapter(policyListAdapter);
         if (policies.isEmpty()){
-            // Create and start a new Thread
-            new Thread(new Runnable() {
-                public void run() {
-                    try{Thread.sleep(1000);}
-                    catch (Exception e) { } // Just catch the InterruptedException
-                    // Now we use the Handler to post back to the main thread
-                    handler.post(new Runnable() {
-                        public void run() {
-                            // Set the View's visibility back on the main UI Thread
-                            progressBar.setVisibility(View.INVISIBLE);
-                            emptyListPolicy.setVisibility(View.VISIBLE);
-                        }
-                    });
-                }
-            }).start();
+            progressBar.setVisibility(View.INVISIBLE);
+            emptyListPolicy.setVisibility(View.VISIBLE);
         }else{
-            // Create and start a new Thread
+            /*// Create and start a new Thread
             new Thread(new Runnable() {
                 public void run() {
                     try{Thread.sleep(3000);}
@@ -159,13 +147,12 @@ public class ListPoliciesFragment extends Fragment {
                     handler.post(new Runnable() {
                         public void run() {
                             // Set the View's visibility back on the main UI Thread
-                            progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
                 }
-            }).start();
+            }).start();*/
+            progressBar.setVisibility(View.INVISIBLE);
         }
-        handler.removeCallbacksAndMessages(null);
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
