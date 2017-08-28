@@ -42,7 +42,7 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".EditPolicyHolderDetail"
+            android:name=".EditPolicy"
             android:label="@string/edit_policy_holder_activity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateHidden" />
@@ -82,7 +82,10 @@
             android:label="Add a note"
             android:parentActivityName=".ActivityDashboard"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".ViewPolicy" />
+        <activity
+            android:name=".ViewPolicy"
+            android:label="Policy Details"
+            android:parentActivityName=".ActivityDashboard"/>
         <activity
             android:name=".SelectMember"
             android:label="Select Policy Holder"
@@ -95,6 +98,7 @@
         <activity
             android:name=".EditMember"
             android:parentActivityName=".MemberProfileView" />
+
     </application>
 
 </manifest>

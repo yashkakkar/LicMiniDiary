@@ -12,11 +12,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.joooonho.SelectableRoundedImageView;
-import com.yashkakkar.licagentdiary.MemberProfileView;
 import com.yashkakkar.licagentdiary.R;
+import com.yashkakkar.licagentdiary.ViewPolicy;
 import com.yashkakkar.licagentdiary.models.Member;
 import com.yashkakkar.licagentdiary.models.Policy;
+import com.yashkakkar.licagentdiary.utils.DateTimeUtils;
 
+import java.text.ParseException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,7 +63,7 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.My
                 holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(context, MemberProfileView.class);
+                        Intent intent = new Intent(context, ViewPolicy.class);
                         // sending member and policy details
                         intent.putExtra("selectedMember",(Parcelable) member);
                         intent.putExtra("selectedPolicy",(Parcelable) policy);
@@ -69,20 +71,25 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.My
                     }
                 });
             }
-            holder.policyName.setText(policy.getPolicyName());
-            Log.v("policy name", policy.getPolicyName());
-            holder.policyNumber.setText(policy.getPolicyNumber());
-            holder.docDate.setText(policy.getDocDate());
-            holder.dlpDate.setText(policy.getDlpDate());
-            holder.domDate.setText(policy.getDomDate());
-            holder.mode.setText(policy.getMode());
-            holder.term.setText(policy.getTermTable());
-            holder.saAmt.setText("₹ "+policy.getSaAmount());
-            holder.premiumAmt.setText("₹ "+policy.getPremiumAmount());
-            holder.status.setText(String.valueOf(policy.getPolicyStatus()));
-            holder.dob.setText(policy.getDobDate());
-            holder.age.setText("("+String.valueOf(policy.calculateAgeFromDob(policy.getDobDate()))+")");
+
         }
+        holder.policyName.setText(policy.getPolicyName());
+        Log.v("policy name", policy.getPolicyName());
+        holder.policyNumber.setText(policy.getPolicyNumber());
+        try {
+            holder.docDate.setText(DateTimeUtils.convertDate(policy.getDocDate()));
+            holder.dlpDate.setText(DateTimeUtils.convertDate(policy.getDlpDate()));
+            holder.domDate.setText(DateTimeUtils.convertDate(policy.getDomDate()));
+            holder.dob.setText(DateTimeUtils.convertDate(policy.getDobDate()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        holder.mode.setText(policy.getMode());
+        holder.term.setText(policy.getTermTable());
+        holder.saAmt.setText("₹ "+policy.getSaAmount());
+        holder.premiumAmt.setText("₹ "+policy.getPremiumAmount());
+        holder.status.setText(String.valueOf(policy.getPolicyStatus()));
+        holder.age.setText("("+String.valueOf(policy.calculateAgeFromDob(policy.getDobDate()))+")");
 
     }
 

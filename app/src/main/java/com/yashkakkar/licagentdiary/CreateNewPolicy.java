@@ -310,10 +310,6 @@ public class CreateNewPolicy extends AppCompatActivity {
         premium_amt = premiumAmount.getText().toString().trim();
         nominee_name = nomineeName.getText().toString().trim();
 
-
-
-
-
         policy.setPolicyId(policy_id);
         policy.setPolicyName(policy_name);
         policy.setPolicyNumber(policy_number);
@@ -344,8 +340,10 @@ public class CreateNewPolicy extends AppCompatActivity {
                   // policy created
                   // Show a Toast message and go to MemberProfileView class
                   Toast.makeText(this,"Policy Created Successfully!", Toast.LENGTH_SHORT).show();
-                  Intent intent = new Intent(this,MemberProfileView.class);
+                  Intent intent = new Intent(this,ViewPolicy.class);
                   // send the member and policy data to MemberProfile Activity
+                  intent.putExtra("selectedMember", selectedMember);
+                  intent.putExtra("selectedPolicy", policy);
                   startActivity(intent);
                   finish();
               }else {

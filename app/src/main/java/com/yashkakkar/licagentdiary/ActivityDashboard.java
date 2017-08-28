@@ -231,9 +231,9 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
 
                     addPolicies.hide();
                     addNotes.hide();
-                    Snackbar.make(findViewById(android.R.id.content),"Tap + Add New Member", Snackbar.LENGTH_LONG)
+                  /*  Snackbar.make(findViewById(android.R.id.content),"Tap + Add New Member", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-
+*/
                 }
             }
 
@@ -309,16 +309,18 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
             int hasCallingPermission = checkSelfPermission(Manifest.permission.CALL_PHONE);
             if(hasCallingPermission != PackageManager.PERMISSION_GRANTED){
                 if (!shouldShowRequestPermissionRationale(Manifest.permission.CALL_PHONE)) {
-                    showMessageOKCancel("You need to allow access to Calling Phone",
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermissions(new String[] {Manifest.permission.CALL_PHONE},
+                                REQUEST_CODE_ASK_PERMISSIONS);
+                    }
+                 /*   showMessageOKCancel("You need to allow access to Calling Phone",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                        requestPermissions(new String[] {Manifest.permission.CALL_PHONE},
-                                                REQUEST_CODE_ASK_PERMISSIONS);
-                                    }
+
                                 }
-                            });
+                            });*/
                     return;
                 }
                 requestPermissions(new String[]{Manifest.permission.CALL_PHONE},REQUEST_CODE_ASK_PERMISSIONS);
@@ -327,14 +329,14 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
 
     }
 
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+   /* private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(this)
                 .setMessage(message)
                 .setPositiveButton("OK", okListener)
                 .setNegativeButton("Cancel", null)
                 .create()
                 .show();
-    }
+    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -535,7 +537,7 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
             userName.setText(user.getDisplayName());
             userEmailId.setText(user.getEmail());
 
-            Toast.makeText(ActivityDashboard.this, "Welcome! " +user.getDisplayName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(ActivityDashboard.this, "Welcome! " +user.getEmail(), Toast.LENGTH_SHORT).show();
         }
 
         authListener = new FirebaseAuth.AuthStateListener() {
