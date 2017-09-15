@@ -26,6 +26,7 @@ import com.yashkakkar.licagentdiary.R;
 import com.yashkakkar.licagentdiary.models.Member;
 import com.yashkakkar.licagentdiary.utils.BitmapUtility;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -72,12 +73,11 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.My
         holder.mEmail.setText(member.getMemberEmailId());
 
         bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+PATH+"/"+member.getMemberImageName()+".jpg");
-        if (bitmap!= null) {
 
+        if (bitmap!= null) {
             BitmapUtility bitmapUtility = new BitmapUtility();
             bitmap = bitmapUtility.getScaledBitmap(bitmap, 300);
             holder.mImage.setImageBitmap(bitmap);
-
         }else {
             int resId = context.getResources().getIdentifier("ic_member_profile_pic", "drawable", context.getPackageName());
             holder.mImage.setImageResource(resId);

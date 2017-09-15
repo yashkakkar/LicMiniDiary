@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.yashkakkar.licagentdiary.R;
+import com.yashkakkar.licagentdiary.async.eventbus.DeleteMemberEvent;
 import com.yashkakkar.licagentdiary.async.eventbus.GetMemberListEvent;
+import com.yashkakkar.licagentdiary.async.member.DeleteMemberTask;
 import com.yashkakkar.licagentdiary.async.member.GetMemberListTask;
 import com.yashkakkar.licagentdiary.models.Adapters.MemberListAdapter;
 import com.yashkakkar.licagentdiary.models.Adapters.TouchListener.RecyclerItemClickListener;
@@ -216,13 +218,17 @@ public class ListMembersFragment extends Fragment {
             switch (item.getItemId()){
                 case R.id.action_delete_selected_member:
                     MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
-                            .content("Delete "+multi_select_member.size()+" contacts?")
+                            .content("Delete "+multi_select_member.size()+" contacts? \n It may delete all policies associated with the contacts!")
                             .positiveText("DELETE")
                             .negativeText("CANCEL")
                             .callback(new MaterialDialog.ButtonCallback() {
 
                                 @Override
                                 public void onPositive(MaterialDialog dialog) {
+
+                                    // Delete the members
+                                    DeleteMemberTask deleteMemberTask = new DeleteMemberTask(multi_select_member,getActivity());
+                                    deleteMemberTask.execute();
                                     if(multi_select_member.size()>0) {
                                         for(int i=0; i < multi_select_member.size(); i++){
                                             members.remove(multi_select_member.get(i));
@@ -231,7 +237,7 @@ public class ListMembersFragment extends Fragment {
                                         if (mActionMode != null) {
                                             mActionMode.finish();
                                         }
-                                        Toast.makeText(getActivity(), "Delete Click", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), "Deleted Successfully", Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
@@ -262,4 +268,13 @@ public class ListMembersFragment extends Fragment {
 
     };
 
+
+    @Subscribe
+    public void onEvent(DeleteMemberEvent event){
+    if (event.isMembersDelete()){
+        Toast.makeText(getActivity(),"Contacts deleted Successfully!",Toast.LENGTH_LONG).show();
+    }else {
+        Toast.makeText(getActivity(),"Problem deleting members",Toast.LENGTH_LONG).show();
+    }
+    }
 }

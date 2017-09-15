@@ -66,8 +66,10 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".MyNotes" />
-        <activity android:name=".EditMyNote" />
+        <activity
+            android:name=".EditMyNote"
+            android:label="@string/edit_notes"
+            android:parentActivityName=".ActivityDashboard"/>
         <activity
             android:name=".CreateNewMember"
             android:label="Add new policy holder"
@@ -98,7 +100,6 @@
         <activity
             android:name=".EditMember"
             android:parentActivityName=".MemberProfileView" />
-
     </application>
 
 </manifest>

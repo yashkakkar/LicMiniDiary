@@ -32,14 +32,12 @@ public class CurrentDateTimeUtils {
 
     public String getCurrentDate(String format){
         DateFormat dateFormat = new SimpleDateFormat(format, Locale.US);
-        Date date = new Date();
-        return dateFormat.format(date);
+        return dateFormat.format(new Date());
     }
 
     public String getCurrentTime(String format){
         DateFormat dateFormat = new SimpleDateFormat(format, Locale.US);
-        Date date = new Date();
-        return dateFormat.format(date);
+        return dateFormat.format(new Date());
     }
 
 }

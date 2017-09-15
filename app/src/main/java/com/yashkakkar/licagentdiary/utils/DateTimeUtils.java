@@ -34,10 +34,17 @@ public class DateTimeUtils {
 
     // get date in string and return String date date,month year ex. 12 Aug, 2017
     public static String convertDate(String date) throws ParseException {
-        DateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Date date1 = sdf.parse(date);
-        DateFormat sdf1 = new SimpleDateFormat("dd MMM, yyyy", Locale.ENGLISH);
+        //Calendar c = Calendar.getInstance();
+        //c.setTime(sdf.parse(date));
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd MMM, yyyy", Locale.ENGLISH);
         return sdf1.format(date1);
+    }
+
+    public static String convertDateTime(String date){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM, yyyy K:mm a",Locale.ENGLISH);
+        return date;
     }
 
 }

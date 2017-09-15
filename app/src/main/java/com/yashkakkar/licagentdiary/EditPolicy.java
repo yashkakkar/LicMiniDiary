@@ -185,6 +185,7 @@ public class EditPolicy extends AppCompatActivity {
             policyEdit.setMemberId(policy.getMemberId());
             policyEdit.setPolicyId(policy.getPolicyId());
             policyEdit.setPolicyName(policyNameEdit.getText().toString());
+            Toast.makeText(this,"policy name update to  "+policyNameEdit.getText().toString(),Toast.LENGTH_SHORT).show();
             policyEdit.setPolicyNumber(policyNumberEdit.getText().toString());
             policyEdit.setDocDate(policyDocDateEdit.getText().toString());
             policyEdit.setDlpDate(policyDlpDateEdit.getText().toString());

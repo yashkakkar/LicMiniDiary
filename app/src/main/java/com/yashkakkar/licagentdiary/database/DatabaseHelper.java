@@ -272,7 +272,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     /**
      * Queries for Policies Table
      * */
@@ -390,10 +389,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return policies;
     }
 
-    public boolean updatePolicy(Policy policy, String policy_id){
+    public boolean updatePolicy(Policy policy){
         SQLiteDatabase db = getDatabase(true);
         ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_MEMBER_ID, policy.getMemberId());
+        Log.v("policy name db update: ",policy.getPolicyName());
         initialValues.put(KEY_POLICY_NAME, policy.getPolicyName());
         initialValues.put(KEY_POLICY_NUMBER, policy.getPolicyNumber());
         initialValues.put(KEY_POLICY_DOC_DATE, policy.getDobDate());
@@ -408,7 +407,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         initialValues.put(KEY_POLICY_MARKED, policy.getMarked());
         initialValues.put(KEY_POLICY_BOOK_MARKED, policy.getBookMarked());
         initialValues.put(KEY_POLICY_STATUS, policy.getPolicyStatus());
-        db.update(TABLE_POLICIES, initialValues, KEY_POLICY_ID + "=" + policy_id, null);
+        db.update(TABLE_POLICIES, initialValues, KEY_POLICY_ID + "=" + policy.getPolicyId(), null);
         return true;
     }
 
@@ -463,22 +462,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return notes;
     }
 
-    public boolean updateNote(Note note, Long note_id){
+    public boolean updateNote(Note note){
         SQLiteDatabase db = getDatabase(true);
         ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_NOTE_ID, note.getNoteId());
         initialValues.put(KEY_NOTE_TITLE, note.getNoteTitle());
         initialValues.put(KEY_NOTE_CONTENT,note.getNoteContents());
-        initialValues.put(KEY_NOTE_TIME_CREATED, note.getTimeCreated());
-        initialValues.put(KEY_NOTE_DATE_CREATED, note.getDateCreated());
         initialValues.put(KEY_NOTE_LAST_MODIFICATION, note.getLastModification());
-        db.update(TABLE_NOTES, initialValues, KEY_MEMBER_ID + "=" + note_id, null);
+        String note_id = note.getNoteId();
+        db.update(TABLE_NOTES, initialValues, KEY_NOTE_ID + " = "+"'"+note_id+"'", null);
         return true;
     }
 
     public boolean deleteNote(String note_id){
         SQLiteDatabase db = getDatabase(true);
-        return db.delete(TABLE_NOTES, KEY_NOTE_ID + "=" + note_id, null) > 0;
+        return db.delete(TABLE_NOTES, KEY_NOTE_ID + " = " +"'"+note_id+"'", null) > 0;
     }
 
 

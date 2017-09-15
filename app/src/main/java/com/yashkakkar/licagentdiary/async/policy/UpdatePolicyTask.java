@@ -26,7 +26,7 @@ public class UpdatePolicyTask extends AsyncTask<Void, Void, Boolean> {
     @Override
     protected Boolean doInBackground(Void... params) {
         boolean result;
-        result = DatabaseHelper.getInstance().updatePolicy(policy, policy.getPolicyId());
+        result = DatabaseHelper.getInstance(context).updatePolicy(policy);
         return result;
     }
 

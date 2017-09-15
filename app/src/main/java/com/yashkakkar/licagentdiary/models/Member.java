@@ -21,22 +21,12 @@ public class Member implements Parcelable{
     private byte[] memberImageFile;
     private int memberFav;
 
-
     /**
      * A constructor that initializes the Member object
      **/
     public Member(){
 
     }
-    /*
-
-        public Member(String memberId, String memberName, String memberPhoneNumber, String memberEmailId) {
-            this.memberId = memberId;
-            this.memberName = memberName;
-            this.memberPhoneNumber = memberPhoneNumber;
-            this.memberEmailId = memberEmailId;
-        }
-    */
 
     public Member(String memberId, String memberName, String memberPhoneNumber, String memberEmailId, String memberGender, String memberImagePath, String memberImageName, byte[] memberImageFile, int memberFav) {
         this.memberId = memberId;

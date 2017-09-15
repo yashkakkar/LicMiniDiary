@@ -84,8 +84,8 @@ public class AddNewNote extends AppCompatActivity {
                     note_id = GenerateUniqueId.newInstance().generateUniqueKeyUsingUUID();
 
                     // get current date and time
-                    note_date = CurrentDateTimeUtils.newInstance().getCurrentDate("dd/mm/yyyy");
-                    note_time = CurrentDateTimeUtils.newInstance().getCurrentTime("HH:mm:ss");
+                    note_date = CurrentDateTimeUtils.newInstance().getCurrentDate("dd MMM, yyyy");
+                    note_time = CurrentDateTimeUtils.newInstance().getCurrentTime("K:mm a");
                     note_last_modification = note_date+" "+note_time;
                     Note note = new Note(note_id,note_title,note_contents,note_time,note_date,note_last_modification);
 
