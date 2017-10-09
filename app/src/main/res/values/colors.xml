@@ -7,7 +7,7 @@
     <color name="lightPrimaryColor">#cfd8dc</color>
     <color name="primaryText">#212121</color>
     <color name="secondaryText">#757575</color>
-    <color name="dividerColor">#BDBDBD</color>
+    <color name="dividerColor">#bdbdbd</color>
     <color name="rippleColor">#757575</color>
 
 
@@ -22,7 +22,7 @@
     <color name="rippleColorThemeDark">#757575</color>
 
 
-    <color name="white">#fff</color>
+    <color name="white">#ffffff</color>
 
     <color name="orange">#EF6C00</color>
     <color name="pink">#e91e63</color>
@@ -31,23 +31,23 @@
     <color name="purple">#6A1B9A</color>
 
 
-    <color name="screenOne">#4f5b62</color>
-    <color name="screenTwo">#448aff</color>
-    <color name="screenThree">#6A1B9A</color>
-    <color name="screenFour">#2196f3</color>
-    <color name="screenFive">#4f5b62</color>
+    <color name="screenOne">#ffffff</color>
+    <color name="screenTwo">#ffffff</color>
+    <color name="screenThree">#ffffff</color>
+    <color name="screenFour">#ffffff</color>
+    <color name="screenFive">#ffffff</color>
 
-    <color name="dot_dark_screenOne">#448aff</color>
-    <color name="dot_dark_screenTwo">#4f5b62</color>
-    <color name="dot_dark_screenThree">#4f5b62</color>
-    <color name="dot_dark_screenFour">#4f5b62</color>
-    <color name="dot_dark_screenFive">#448aff</color>
+    <color name="dot_dark_screenOne">#263238</color>
+    <color name="dot_dark_screenTwo">#263238</color>
+    <color name="dot_dark_screenThree">#263238</color>
+    <color name="dot_dark_screenFour">#263238</color>
+    <color name="dot_dark_screenFive">#263238</color>
 
-    <color name="dot_light_screenOne">#ffffff</color>
-    <color name="dot_light_screenTwo">#ffffff</color>
-    <color name="dot_light_screenThree">#ffffff</color>
-    <color name="dot_light_screenFour">#ffffff</color>
-    <color name="dot_light_screenFive">#ffffff</color>
+    <color name="dot_light_screenOne">#448aff</color>
+    <color name="dot_light_screenTwo">#448aff</color>
+    <color name="dot_light_screenThree">#448aff</color>
+    <color name="dot_light_screenFour">#448aff</color>
+    <color name="dot_light_screenFive">#448aff</color>
 
     <array name="dot_active">
         <item>@color/dot_light_screenOne</item>

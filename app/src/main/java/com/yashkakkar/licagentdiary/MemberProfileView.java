@@ -76,12 +76,13 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
     @BindView(R.id.whatsapp_message) LinearLayout whatsAppMessage;
     @BindView(R.id.whatsapp_voice_call) LinearLayout whatsAppVoiceCall;
     @BindView(R.id.whatsapp_video_call) LinearLayout whatsAppVideoCall;
+
     // Whatsapp text
     @BindView(R.id.member_profile_whatsapp_message) TextView whatsAppMessageText;
     @BindView(R.id.member_profile_whatsapp_voice_call) TextView whatsAppVoiceText;
     @BindView(R.id.member_profile_whatsapp_video_call) TextView whatsAppVideoText;
 
-    @BindView(R.id.member_policies_list_view) RecyclerView memberPolicyListView;
+    // @BindView(R.id.member_policies_list_view) RecyclerView memberPolicyListView;
     private boolean isWhatsAppNumber = false;
     private String whatsAppId;
     private Unbinder unbinder;
@@ -180,8 +181,7 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
         whatsAppMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /* Open the whats app chat box
-                 */
+                /* Open the whats app chat box */
                 Uri uri = Uri.parse("smsto:" + member.getMemberPhoneNumber());
                 Intent intentMsg = new Intent(Intent.ACTION_SENDTO, uri);
                 intentMsg.setPackage("com.whatsapp");
@@ -218,13 +218,15 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
         });*/
 
         // show no. of policy belongs to a particular member with option of view,share, edit, delete
-        GetMemberPoliciesListTask getMemberPoliciesListTask = new GetMemberPoliciesListTask(this);
+     /*   GetMemberPoliciesListTask getMemberPoliciesListTask = new GetMemberPoliciesListTask(this);
         getMemberPoliciesListTask.execute(member.getMemberId());
 
         policyList = new ArrayList<>();
         PoliciesAdapter policyListAdapter = new PoliciesAdapter(this,policyList);
         memberPolicyListView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         memberPolicyListView.setAdapter(policyListAdapter);
+    */
+
     }
 
     @Subscribe
@@ -247,9 +249,10 @@ public class MemberProfileView extends AppCompatActivity implements View.OnClick
             // Add a button to add new policy to this member
         }else {
             // set adapter
+          /*
             PoliciesAdapter policyListAdapter = new PoliciesAdapter(this,policyList);
             memberPolicyListView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-            memberPolicyListView.setAdapter(policyListAdapter);
+            memberPolicyListView.setAdapter(policyListAdapter);*/
         }
     }
 

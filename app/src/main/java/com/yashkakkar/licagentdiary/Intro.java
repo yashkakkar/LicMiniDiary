@@ -119,11 +119,11 @@ public class Intro extends AppCompatActivity {
 
             addBottomDots(position);
             if (position == layouts.length - 1) {
-                next.setText("PROCEED");
-                skip.setVisibility(View.GONE);
+                next.setText("Got It!");
+               // skip.setVisibility(View.GONE);
             } else {
-                next.setText("NEXT");
-                skip.setVisibility(View.GONE);
+                next.setText("Next");
+              //  skip.setVisibility(View.GONE);
             }
         }
 

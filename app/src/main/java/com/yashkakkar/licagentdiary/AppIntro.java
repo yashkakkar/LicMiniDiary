@@ -59,7 +59,7 @@ public class AppIntro extends AppCompatActivity {
                                 // textView.setText(progressStatus+"/"+progressBar.getMax());
                             }
                         });
-                        sleep(100);
+                        sleep(1000);
                         if (_active) {
                             _wait += 100;
                         }

@@ -3,6 +3,7 @@ package com.yashkakkar.licagentdiary.models.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,7 +61,7 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.My
                 // set the profile image
                 int resId = context.getResources().getIdentifier("ic_member_profile_pic","drawable",context.getPackageName());
                 holder.memberProfileIcon.setImageResource(resId);
-                holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(context, ViewPolicy.class);
@@ -77,19 +78,19 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.My
         Log.v("policy name", policy.getPolicyName());
         holder.policyNumber.setText(policy.getPolicyNumber());
         try {
-            holder.docDate.setText(DateTimeUtils.convertDate(policy.getDocDate()));
-            holder.dlpDate.setText(DateTimeUtils.convertDate(policy.getDlpDate()));
-            holder.domDate.setText(DateTimeUtils.convertDate(policy.getDomDate()));
-            holder.dob.setText(DateTimeUtils.convertDate(policy.getDobDate()));
+            holder.docDate.setText("DOC: "+DateTimeUtils.convertDate(policy.getDocDate()));
+            holder.dlpDate.setText("DLP: "+DateTimeUtils.convertDate(policy.getDlpDate()));
+            holder.domDate.setText("DOM: "+DateTimeUtils.convertDate(policy.getDomDate()));
+            holder.dob.setText("Dob: "+DateTimeUtils.convertDate(policy.getDobDate()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        holder.mode.setText(policy.getMode());
-        holder.term.setText(policy.getTermTable());
-        holder.saAmt.setText("₹ "+policy.getSaAmount());
-        holder.premiumAmt.setText("₹ "+policy.getPremiumAmount());
+        holder.mode.setText("Mode: "+policy.getMode());
+        holder.term.setText("Term: "+policy.getTermTable());
+        holder.saAmt.setText("S.A. Amt: ₹ "+policy.getSaAmount());
+        holder.premiumAmt.setText("P.Amt: ₹ "+policy.getPremiumAmount());
         holder.status.setText(String.valueOf(policy.getPolicyStatus()));
-        holder.age.setText("("+String.valueOf(policy.calculateAgeFromDob(policy.getDobDate()))+")");
+        holder.age.setText("Age: "+"("+String.valueOf(policy.calculateAgeFromDob(policy.getDobDate()))+")");
 
     }
 
@@ -115,7 +116,8 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.My
         @BindView(R.id.policy_row_premium_amount) TextView premiumAmt;
         @BindView(R.id.policy_row_status) TextView status;
 
-        @BindView(R.id.profile_row_relative_layout) RelativeLayout relativeLayout;
+        @BindView(R.id.profile_row_constraint_layout) ConstraintLayout constraintLayout;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

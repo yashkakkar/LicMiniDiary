@@ -123,7 +123,6 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
                 startActivity(intent);
             }
         });
-
         // Setting Bottom Navigation
         bottomNavigation();
     }
@@ -326,7 +325,6 @@ public class ActivityDashboard extends AppCompatActivity implements NavigationVi
                 requestPermissions(new String[]{Manifest.permission.CALL_PHONE},REQUEST_CODE_ASK_PERMISSIONS);
             }
         }
-
     }
 
    /* private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {

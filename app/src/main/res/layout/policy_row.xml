@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/profile_row_relative_layout"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_row_constraint_layout"
     android:layout_width="match_parent"
-    android:layout_height="115dp"
+    android:layout_height="125dp"
     android:background="@drawable/item_selector"
     android:clickable="true">
 
@@ -10,12 +12,6 @@
         android:id="@+id/policy_row_profile_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_member_profile_pic"
         app:sriv_border_color="#008fea"
@@ -24,30 +20,46 @@
         app:sriv_left_top_corner_radius="16dip"
         app:sriv_oval="true"
         app:sriv_right_bottom_corner_radius="16dip"
-        app:sriv_right_top_corner_radius="16dip" />
+        app:sriv_right_top_corner_radius="16dip"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/policy_row_member_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/policy_row_profile_icon"
-        android:layout_toEndOf="@+id/policy_row_profile_icon"
-        android:layout_toRightOf="@+id/policy_row_profile_icon"
-        android:text="member name"
+        android:text="Member name"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/policy_row_profile_icon"
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/policy_row_policy_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/policy_row_profile_icon"
-        android:layout_alignStart="@+id/policy_row_profile_icon"
-        android:layout_below="@+id/policy_row_profile_icon"
-        android:layout_marginTop="8dp"
         android:text="policy name"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_profile_icon" />
 
     <TextView
         android:id="@+id/policy_row_policy_number"
@@ -55,34 +67,38 @@
         android:layout_height="wrap_content"
         android:text="policy number"
         android:textSize="12sp"
-        android:layout_below="@+id/policy_row_policy_name"
-        android:layout_alignLeft="@+id/policy_row_policy_name"
-        android:layout_alignStart="@+id/policy_row_policy_name" />
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_policy_name"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/policy_row_policy_name" />
 
     <TextView
         android:id="@+id/policy_row_docdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/policy_row_sa_amount"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_toEndOf="@+id/policy_row_policy_number"
-        android:layout_toRightOf="@+id/policy_row_policy_number"
         android:text="docdate"
         android:textSize="12sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_marginEnd="3dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_policy_number"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/policy_row_policy_number" />
 
     <TextView
         android:id="@+id/policy_row_premium_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/policy_row_policy_name"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:text="premium amount"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_status"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/policy_row_age"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.857" />
 
     <TextView
         android:id="@+id/policy_row_mode"
@@ -92,12 +108,10 @@
         android:textAllCaps="true"
         android:textSize="12sp"
         android:textStyle="bold"
-        android:layout_marginRight="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_alignBaseline="@+id/policy_row_premium_amount"
-        android:layout_alignBottom="@+id/policy_row_premium_amount"
-        android:layout_toLeftOf="@+id/policy_row_premium_amount"
-        android:layout_toStartOf="@+id/policy_row_premium_amount" />
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_premium_amount" />
 
     <TextView
         android:id="@+id/policy_row_sa_amount"
@@ -105,9 +119,14 @@
         android:layout_height="wrap_content"
         android:text="sum assured amount"
         android:textStyle="bold"
-        android:layout_alignBottom="@+id/policy_row_dlpdate"
-        android:layout_alignRight="@+id/policy_row_premium_amount"
-        android:layout_alignEnd="@+id/policy_row_premium_amount" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_domdate"
+        app:layout_constraintLeft_toRightOf="@+id/policy_row_term"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
         android:id="@+id/policy_row_domdate"
@@ -116,38 +135,41 @@
         android:text="domdate"
         android:textSize="12sp"
         android:textStyle="italic"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/policy_row_policy_number"
-        android:layout_alignStart="@+id/policy_row_policy_number"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/policy_row_policy_number"
+        app:layout_constraintHorizontal_bias="0.919"
+        android:layout_marginTop="11dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_dlpdate" />
 
     <TextView
         android:id="@+id/policy_row_term"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/policy_row_dlpdate"
-        android:layout_alignBottom="@+id/policy_row_dlpdate"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_toEndOf="@+id/policy_row_dlpdate"
-        android:layout_toRightOf="@+id/policy_row_dlpdate"
         android:text="term"
         android:textAllCaps="true"
         android:textSize="12sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginStart="4dp"
+        app:layout_constraintLeft_toRightOf="@+id/policy_row_docdate"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_policy_number" />
 
     <TextView
         android:id="@+id/policy_row_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/policy_row_member_name"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_toEndOf="@+id/policy_row_dobdate"
-        android:layout_toRightOf="@+id/policy_row_dobdate"
         android:text="age"
         android:textSize="12sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_marginStart="4dp"
+        app:layout_constraintLeft_toRightOf="@+id/policy_row_dobdate"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_member_name" />
 
     <TextView
         android:id="@+id/policy_row_dobdate"
@@ -156,32 +178,37 @@
         android:text="dobdate"
         android:textSize="12sp"
         android:textStyle="italic"
-        android:layout_below="@+id/policy_row_member_name"
-        android:layout_alignLeft="@+id/policy_row_member_name"
-        android:layout_alignStart="@+id/policy_row_member_name" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_member_name"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/policy_row_member_name" />
 
     <TextView
         android:id="@+id/policy_row_dlpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/policy_row_domdate"
-        android:layout_alignBottom="@+id/policy_row_domdate"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_toEndOf="@+id/policy_row_domdate"
-        android:layout_toRightOf="@+id/policy_row_domdate"
         android:text="dlpdate"
         android:textSize="12sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/policy_row_premium_amount"
+        app:layout_constraintRight_toLeftOf="@+id/policy_row_mode"
+        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/policy_row_policy_name"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
         android:id="@+id/policy_row_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="status"
-        android:layout_alignBaseline="@+id/policy_row_member_name"
-        android:layout_alignBottom="@+id/policy_row_member_name"
-        android:layout_alignRight="@+id/policy_row_premium_amount"
-        android:layout_alignEnd="@+id/policy_row_premium_amount" />
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
